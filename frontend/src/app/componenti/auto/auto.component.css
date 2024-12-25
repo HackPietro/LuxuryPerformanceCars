@@ -1,0 +1,258 @@
+/* Impostazioni di base */
+* {
+  box-sizing: border-box;
+}
+
+/* Contenitore principale */
+.car-ad-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.image-section {
+  flex: 1;
+  max-width: 50%;
+  margin-right: 20px;
+}
+
+/* Carousel immagini */
+.carousel {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.car-image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.carousel-button.prev {
+  left: 10px;
+}
+
+.carousel-button.next {
+  right: 10px;
+}
+
+/* Sezione dettagli */
+.details-section {
+  flex: 1;
+  max-width: 45%;
+  padding: 10px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+  text-align: center;
+}
+
+.specs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.spec {
+  font-size: 14px;
+}
+
+.description {
+  margin-top: 20px;
+}
+
+/* Area per pulsanti di azione */
+.actions {
+  position: relative; /* Ancoriamo il menu flottante al bottone principale */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+/* Pulsante principale */
+.fab-button {
+  width: 56px;
+  height: 56px;
+  background-color: #ff9900;
+  color: white;
+  padding: 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+  position: relative;
+}
+
+.fab-button:hover {
+  background-color: #e68a00;
+}
+
+/* Menu per pulsanti di condivisione, allineati sotto il pulsante principale */
+.fab-menu {
+  position: absolute;
+  top: 70px; /* Distanza per posizionare i pulsanti direttamente sotto il principale */
+  left: 89%; /* Centrato rispetto al pulsante principale */
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Spazio tra i pulsanti */
+  align-items: center;
+  z-index: 999;
+}
+
+/* Pulsanti di condivisione con la stessa dimensione del pulsante principale */
+.fab-menu button {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: white;
+  border: 1px solid #ccc;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.fab-menu button:hover {
+  transform: scale(1.1);
+}
+
+/* Colori specifici per ciascun pulsante */
+.fab-menu .facebookButton {
+  background-color: #3b5998;
+}
+
+.fab-menu .whatsappButton {
+  background-color: #25d366;
+}
+
+.fab-menu .emailButton {
+  background-color: #0078d4;
+}
+
+/* Sezione Auto Correlate */
+.related-cars-section {
+  margin-top: 40px;
+}
+
+.related-auto-mat {
+  width: 100%;
+}
+
+.related-tile {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 10px; /* Spaziatura tra le tessere */
+}
+
+.related-card {
+  display: flex;
+  flex-direction: column; /* Posiziona immagine e testo verticalmente */
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 200px; /* Dimensione fissa per tutte le card */
+  padding: 10px;
+  border: 1px solid #e0e0e0; /* Bordo leggero */
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Effetto ombra per risalto */
+}
+
+.related-card:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Aumenta l'ombra al passaggio */
+  transform: scale(1.02); /* Leggero zoom */
+  transition: all 0.3s ease-in-out;
+}
+
+/* Gestione immagini correlate */
+.related-card .imageContainer img {
+  width: 100%; /* Assicura che l'immagine occupi tutta la larghezza del contenitore */
+  height: auto; /* Mantieni le proporzioni originali */
+  max-height: 150px; /* Imposta un limite all'altezza per mantenere un layout uniforme */
+  object-fit: cover; /* Taglia l'immagine se necessario per riempire lo spazio */
+  border-radius: 10px; /* Arrotonda i bordi per un aspetto moderno */
+}
+
+.related-card .imageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Evita che le immagini fuoriuscano dal contenitore */
+  height: 150px; /* Imposta un'altezza fissa */
+}
+
+/* Footer */
+.footerDiv {
+  margin-top: 40px;
+  width: 100%;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .car-ad-container {
+    flex-direction: column;
+  }
+
+  .image-section,
+  .details-section {
+    max-width: 100%;
+  }
+
+  .fab-menu {
+    bottom: 80px;
+  }
+
+  .related-auto-mat {
+    grid-template-columns: repeat(2, 1fr); /* Due colonne per dispositivi più piccoli */
+    gap: 15px;
+  }
+
+  .related-card {
+    max-width: 150px; /* Riduci la larghezza per adattarsi meglio */
+  }
+
+  .related-card .imageContainer {
+    height: 100px; /* Altezza fissa più piccola per le immagini */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .related-auto-mat {
+    grid-template-columns: repeat(1, 1fr); /* Una colonna per dispositivi molto piccoli */
+  }
+
+  .related-card {
+    max-width: 100%;
+  }
+
+  .related-card .imageContainer {
+    height: 80px;
+  }
+}

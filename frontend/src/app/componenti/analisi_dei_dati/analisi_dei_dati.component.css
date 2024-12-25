@@ -1,0 +1,135 @@
+/* Impostazioni generali */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+/* Sfondo con immagine */
+.background {
+  position: relative;
+  min-height: 100vh; /* Copre l'intera altezza della finestra */
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.background::before {
+  content: "";
+  background-image: url("/assets/background.jpg"); /* Percorso immagine */
+  background-size: cover;
+  background-position: center;
+  filter: blur(3px);
+  -webkit-filter: blur(3px);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Manda lo sfondo dietro al contenuto */
+}
+
+.analisi-container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.8); /* Sfondo bianco semi-trasparente */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  position: relative;
+  z-index: 1; /* Assicura che il contenuto sia sopra lo sfondo */
+}
+
+h1 {
+  text-align: center;
+  color: #444;
+  margin-bottom: 30px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Impostazioni per i wrapper dei grafici */
+.charts-wrapper {
+  display: flex;
+  flex-direction: column; /* Disposizione verticale */
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.chart-container {
+  width: 90%; /* Larghezza dei grafici ridotta */
+  max-width: 600px;
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px; /* Spaziatura ridotta */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  display: none; /* Nasconde tutti i grafici di default */
+}
+
+.chart-container canvas {
+  width: 100%;
+  height: 150px; /* Altezza ridotta a circa 5 cm */
+}
+
+/* Dropdown stile */
+.dropdown-container {
+  margin: 20px 0;
+  text-align: center;
+}
+
+label {
+  font-size: 16px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+#chart-select {
+  font-size: 16px;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+#chart-select:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+#canvas-container {
+  width: 90%;
+  max-width: 600px;
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  margin: 20px 0;
+}
+
+#stackedBarChartBrandModels {
+  width: 100%;
+  height: 150px; /* Altezza ridotta */
+}
+
+/* Media query per dispositivi mobili */
+@media (max-width: 768px) {
+  .charts-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .chart-container {
+    width: 100%;
+    max-width: 90%;
+  }
+}

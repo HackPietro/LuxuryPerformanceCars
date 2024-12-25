@@ -1,0 +1,90 @@
+<div class="background">
+  <div class="analisi-container">
+    <h1>Analisi dei dati</h1>
+
+    <!-- Dropdown per selezionare il grafico -->
+    <div class="dropdown-container">
+      <label for="chart-select">Seleziona Grafico:</label>
+      <select id="chart-select" (change)="onChartSelect($event)">
+        <option value="" selected disabled>Seleziona un grafico</option>
+        <option value="barChartMin">Prezzi Minimi</option>
+        <option value="barChartMax">Prezzi Massimi</option>
+        <option value="pieChartDoors">Numero di porte</option>
+        <option value="pieChartNeoDrivers">Neopatentati</option>
+        <option value="barChartBrands">Marche</option>
+        <option value="stackedBarChartBrandModels">Modelli</option>
+        <option value="barChartMinKm">Km Minimi</option>
+        <option value="barChartMaxKm">Km Massimi</option>
+        <option value="barChartYearFrom">Anni Minimi</option>
+        <option value="barChartYearTo">Anni Massimi</option>
+        <option value="pieChartCambio">Cambi</option>
+        <option value="barChartCarburante">Carburanti</option>
+        <option value="barChartCategoria">Categorie</option>
+        <option value="stackedBarClickCount">Click</option>
+      </select>
+    </div>
+
+    <!-- Dropdown per selezionare la marca -->
+    <div class="dropdown-container" *ngIf="showBrandSelector">
+      <label for="brand-select">Seleziona Marca:</label>
+      <select id="brand-select" (change)="onBrandSelect($event)">
+        <option value="" selected disabled>Seleziona una marca</option>
+        <option *ngFor="let brand of brands" [value]="brand">{{ brand }}</option>
+      </select>
+    </div>
+
+    <div class="dropdown-container" *ngIf="showBrandModelSelector">
+      <label for="model-select">Seleziona Modello:</label>
+      <select id="model-select" (change)="onModelSelect($event)">
+        <option value="" selected disabled>Seleziona un modello</option>
+        <option *ngFor="let model of models" [value]="model">{{ model }}</option>
+      </select>
+    </div>
+
+    <!-- Container per i grafici -->
+    <div class="charts-wrapper">
+      <div class="chart-container" id="barChartMin-container">
+        <canvas id="barChartMin"></canvas>
+      </div>
+      <div class="chart-container" id="barChartMax-container">
+        <canvas id="barChartMax"></canvas>
+      </div>
+      <div class="chart-container" id="pieChartDoors-container">
+        <canvas id="pieChartDoors"></canvas>
+      </div>
+      <div class="chart-container" id="pieChartNeoDrivers-container">
+        <canvas id="pieChartNeoDrivers"></canvas>
+      </div>
+      <div class="chart-container" id="barChartBrands-container">
+        <canvas id="barChartBrands"></canvas>
+      </div>
+      <div class="chart-container" id="stackedBarChartBrandModels-container">
+        <canvas id="stackedBarChartBrandModels"></canvas>
+      </div>
+      <div class="chart-container" id="barChartMinKm-container">
+        <canvas id="barChartMinKm"></canvas>
+      </div>
+      <div class="chart-container" id="barChartMaxKm-container">
+        <canvas id="barChartMaxKm"></canvas>
+      </div>
+      <div class="chart-container" id="barChartYearFrom-container">
+        <canvas id="barChartYearFrom"></canvas>
+      </div>
+      <div class="chart-container" id="barChartYearTo-container">
+        <canvas id="barChartYearTo"></canvas>
+      </div>
+      <div class="chart-container" id="pieChartCambio-container">
+        <canvas id="pieChartCambio"></canvas>
+      </div>
+      <div class="chart-container" id="barChartCarburante-container">
+        <canvas id="barChartCarburante"></canvas>
+      </div>
+      <div class="chart-container" id="barChartCategoria-container">
+        <canvas id="barChartCategoria"></canvas>
+      </div>
+      <div class="chart-container" id="stackedBarClickCount-container">
+        <canvas id="stackedBarClickCount"></canvas>
+      </div>
+    </div>
+  </div>
+</div>

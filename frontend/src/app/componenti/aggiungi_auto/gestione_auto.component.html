@@ -1,0 +1,112 @@
+<div class="background">
+  <div class="container">
+    <div class="header">
+      <h2>Aggiungi/Rimuovi Auto</h2>
+      <hr />
+    </div>
+
+    <form [formGroup]="formAggiungiAuto">
+
+      <div class="form-group">
+        <input type="text" formControlName="id" placeholder="ID Auto da rimuovere (lascia vuoto per aggiungere un'auto)" />
+        <button type="button" (click)="deleteAuto()" class="btn-remove">Rimuovi</button>
+      </div>
+
+      <div class="form-group">
+        <input type="text" formControlName="copyId" placeholder="ID Auto da copiare (se vuoi copiare i dati di un'auto esistente)" />
+        <button type="button" (click)="onCopyIdChange()" class="btn-copy">Copia</button>
+      </div>
+
+
+
+      <div class="form-group">
+        <select formControlName="categoria">
+          <option value="" disabled selected>Categoria</option>
+          <option value="Utilitarie">Utilitarie</option>
+          <option value="Berline">Berline</option>
+          <option value="Station Wagon">Station Wagon</option>
+          <option value="Coupé">Coupé</option>
+          <option value="Supercar">Supercar</option>
+          <option value="Cabrio">Cabrio</option>
+          <option value="SUV">SUV</option>
+          <option value="Crossover">Crossover</option>
+          <option value="Monovolume">Monovolume</option>
+          <option value="Pick-Up">Pick-Up</option>
+          <option value="Furgoni">Furgoni</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <input type="text" formControlName="marca" placeholder="Marca" required />
+      </div>
+
+      <div class="form-group">
+        <input type="text" formControlName="modello" placeholder="Modello" required />
+      </div>
+
+      <div class="form-group">
+        <input type="number" formControlName="anno" placeholder="Anno" required min="1970" max="2025" />
+      </div>
+
+      <div class="form-group">
+        <select formControlName="carburante">
+          <option value="" disabled selected>Carburante</option>
+          <option value="Benzina">Benzina</option>
+          <option value="Diesel">Diesel</option>
+          <option value="GPL">GPL</option>
+          <option value="Metano">Metano</option>
+          <option value="Hybrid">Hybrid</option>
+          <option value="Elettrica">Elettrica</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <select formControlName="cambio">
+          <option value="" disabled selected>Tipo di Cambio</option>
+          <option value="Manuale">Manuale</option>
+          <option value="Automatico">Automatico</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <input type="number" formControlName="chilometraggio" placeholder="Chilometraggio" required />
+      </div>
+
+      <div class="form-group">
+        <input type="number" formControlName="cilindrata" placeholder="Cilindrata" required />
+      </div>
+
+      <div class="form-group">
+        <input type="number" formControlName="prezzo" placeholder="Prezzo (€)" required />
+      </div>
+
+      <div class="form-group">
+        <select formControlName="porte">
+          <option value="3">3 porte</option>
+          <option value="5">5 porte</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <select formControlName="neopatentati">
+          <option [value]="true">Adatta a neopatentati</option>
+          <option [value]="false">Non adatta a neopatentati</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <textarea formControlName="descrizione" placeholder="Descrizione"></textarea>
+      </div>
+
+      <div class="form-group file-upload">
+        <input type="file" (change)="onFileChange($event)" accept="image/*" multiple />
+      </div>
+
+      <button type="button" (click)="onSubmit()" class="submit-btn">Salva</button>
+
+      <button type="button" (click)="onCheckProbability()" class="calculate-btn">Calcola Probabilità di Vendita</button>
+      <p *ngIf="successProbability > 0">Probabilità di Vendita: {{ successProbability.toFixed(2) }}%</p>
+
+    </form>
+  </div>
+</div>

@@ -1,0 +1,114 @@
+<div class="car-ad-container">
+  <!-- Colonna Immagine -->
+  <div class="image-section">
+    <div class="carousel">
+      <img *ngFor="let image of imagesSingleAuto; let i = index"
+           [src]="'data:image/png;base64,' + image.base64"
+           class="car-image"
+           [hidden]="i !== currentImageIndex"
+           onerror="this.src='assets/no_images_found.png'">
+      <button *ngIf="imagesSingleAuto.length > 1" class="carousel-button prev" (click)="prevImage()">&#10094;</button>
+      <button *ngIf="imagesSingleAuto.length > 1" class="carousel-button next" (click)="nextImage()">&#10095;</button>
+    </div>
+  </div>
+
+  <!-- Colonna Dettagli -->
+  <div class="details-section">
+    <!-- Titolo e prezzo -->
+    <div class="header">
+      <h1>{{marca}} {{modello}} - {{prezzo}}€</h1>
+    </div>
+
+    <!-- Specifiche del veicolo -->
+    <div class="specs-grid">
+      <div class="spec">
+        <span>Anno:</span> {{anno}}
+      </div>
+      <div class="spec">
+        <span>Carburante:</span> {{carburante}}
+      </div>
+      <div class="spec">
+        <span>Cambio:</span> {{cambio}}
+      </div>
+      <div class="spec">
+        <span>Chilometraggio:</span> {{chilometraggio}} km
+      </div>
+      <div class="spec">
+        <span>Cilindrata:</span> {{cilindrata}} cc
+      </div>
+      <div class="spec">
+        <span>Porte:</span> {{porte}}
+      </div>
+      <div class="spec">
+        <span>Neopatentati:</span> {{neopatentati ? 'Sì' : 'No'}}
+      </div>
+    </div>
+
+    <!-- Descrizione -->
+    <div class="description">
+      <h3>Descrizione</h3>
+      <p>{{descrizione}}</p>
+    </div>
+
+    <!-- Wishlist e condivisione -->
+    <div class="actions">
+      <button mat-fab *ngIf="auth.isLoggedIn$ | async" (click)="addToWishlist()" title="Aggiungi alla wishlist">
+        <mat-icon>favorite</mat-icon>
+      </button>
+
+      <!-- Pulsante Condividi con il menu a discesa -->
+      <button mat-fab class="fab-button" (click)="shareAction()" title="Condividi prodotto">
+        <mat-icon>share</mat-icon>
+      </button>
+      <div class="fab-menu" *ngIf="menuOpen">
+        <button class="facebookButton" mat-button (click)="shareTo('facebook')">
+          <fa-icon [icon]="faFacebook" style="font-size: 20px;"></fa-icon>
+        </button>
+        <button class="whatsappButton" mat-button (click)="shareTo('whatsapp')">
+          <fa-icon [icon]="faWhatsapp" style="font-size: 20px;"></fa-icon>
+        </button>
+        <button class="emailButton" mat-button (click)="shareTo('mail')">
+          <fa-icon [icon]="faEnvelope" style="font-size: 20px;"></fa-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Sezione Auto Correlate -->
+<div class="related-cars-section">
+  <h2>Auto Correlate:</h2>
+  <div class="related-carousel-container">
+    <mat-grid-list [cols]="5" gutterSize="25px" rowHeight="470px" class="related-auto-mat">
+      <mat-grid-tile *ngFor="let auto of autoCorrelate" class="related-tile">
+        <a [href]="'/auto/' + auto.id" style="text-decoration: none; color: black;">
+          <mat-card class="related-card">
+            <div class="imageContainer">
+              <div *ngIf="auto.immagini && auto.immagini.length > 0; else noImage">
+                <!-- Mostra solo la prima immagine -->
+                <img
+                  [src]="'data:image/png;base64,' + auto.immagini[0].base64"
+                  class="related-image"
+                  onerror="this.src='assets/no_images_found.png'"
+                />
+              </div>
+              <ng-template #noImage>
+                <img src="assets/no_images_found.png" class="related-image" />
+              </ng-template>
+            </div>
+            <mat-card-footer>
+              <mat-card-title>{{auto.marca}}</mat-card-title>
+              <mat-card-subtitle>{{auto.modello}}</mat-card-subtitle>
+              <mat-card-title>{{auto.prezzo}}€</mat-card-title>
+            </mat-card-footer>
+          </mat-card>
+        </a>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footerDiv">
+  <app-footer></app-footer>
+</div>

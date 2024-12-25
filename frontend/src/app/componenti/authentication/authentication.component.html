@@ -1,0 +1,57 @@
+<div class="container">
+  <!-- Contenitore logo con immagine di sfondo -->
+  <div class="logo-container"></div>
+
+  <!-- Contenitore icona menu e Wishlist in alto a destra -->
+  <div class="menu-icon-container">
+    <!-- Pulsante Wishlist -->
+    <button mat-fab class="fab-button-3" *ngIf="auth.isLoggedIn$ | async" title="Wishlist"
+            onClick="window.open('http://localhost:4200/wishlist', '_self')"
+            style="text-decoration: none; color: black;">
+      <mat-icon>favorite</mat-icon>
+    </button>
+
+    <!-- Menu di autenticazione -->
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+  </div>
+
+  <!-- Contenitore di autenticazione e pulsanti -->
+  <div class="authentication-container">
+    <button class="transparent-button" title="Clicca qui per il parco auto"
+            routerLink="/parco_auto">
+      Clicca qui per il parco auto
+    </button>
+  </div>
+
+  <!-- Menu di autenticazione per il pulsante con i tre puntini -->
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item onClick="window.open('http://localhost:8080/login', '_self')" *ngIf="!(auth.isLoggedIn$ | async)">
+      <span>Accedi</span>
+    </button>
+    <button mat-menu-item onClick="window.open('http://localhost:8080/registration', '_self')" *ngIf="!(auth.isLoggedIn$ | async)">
+      <span>Registrati</span>
+    </button>
+    <button mat-menu-item *ngIf="auth.isLoggedIn$ | async" routerLink="profilo">
+      <mat-icon>account_circle</mat-icon>
+      <span style="font-size: 15px;">Profilo</span>
+    </button>
+    <button mat-menu-item *ngIf="(auth.isLoggedIn$ | async) && auth.isAdmin()" routerLink="analisi_dei_dati">
+      <mat-icon>bar_chart</mat-icon>
+      <span style="font-size: 15px;">Analisi dei dati</span>
+    </button>
+    <button mat-menu-item *ngIf="(auth.isLoggedIn$ | async) && auth.isAdmin()" routerLink="gestione_auto">
+      <mat-icon>create</mat-icon>
+      <span style="font-size: 15px;">Gestione Auto</span>
+    </button>
+    <button mat-menu-item *ngIf="(auth.isLoggedIn$ | async) && auth.isAdmin()" routerLink="gestione_utenti">
+      <mat-icon>security</mat-icon>
+      <span style="font-size: 15px;">Gestione Utenti</span>
+    </button>
+    <button mat-menu-item *ngIf="auth.isLoggedIn$ | async" (click)="auth.logout()" routerLink="home">
+      <mat-icon>logout</mat-icon>
+      <span style="font-size: 15px;">Esci</span>
+    </button>
+  </mat-menu>
+</div>

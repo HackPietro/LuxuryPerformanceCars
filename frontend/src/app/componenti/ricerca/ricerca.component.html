@@ -1,0 +1,81 @@
+<div class="overlay">
+  <div class="modal">
+    <h2>Ricerca Avanzata</h2>
+
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <!-- Sezione per aggiungere nuovi campi -->
+      <div class="criteri-selezionabili">
+        <label for="criterio">Aggiungi Criterio:</label>
+        <select id="criterio" (change)="onCriterioChange($event)">
+          <option value="" disabled selected>Seleziona un criterio</option>
+          <option *ngFor="let criterio of criteriDisponibili"
+                  [value]="criterio.nome"
+                  [disabled]="criteriSelezionati.has(criterio.nome)">
+            {{ criterio.placeholder }}
+          </option>
+        </select>
+      </div>
+
+      <!-- Campi di ricerca dinamici -->
+      <div formArrayName="criteri" class="criteri-selezionati">
+        <div *ngFor="let gruppo of criteri.controls; let i = index" [formGroupName]="i" class="criterio">
+          <label>{{ gruppo.get('placeholder')?.value }}:</label>
+          <ng-container [ngSwitch]="gruppo.get('nome')?.value">
+            <input *ngSwitchCase="'annoDa'" type="number" formControlName="valore" min="1970" max="2025" required />
+            <input *ngSwitchCase="'annoA'" type="number" formControlName="valore" min="1970" max="2025" required />
+            <select *ngSwitchCase="'marca'" formControlName="valore" (change)="caricaModelli($event)">
+              <option *ngFor="let marca of marche" [value]="marca">{{ marca }}</option>
+            </select>
+            <select *ngSwitchCase="'modello'" formControlName="valore">
+              <option *ngFor="let modello of modelli" [value]="modello">{{ modello }}</option>
+            </select>
+            <select *ngSwitchCase="'categoria'" formControlName="valore">
+              <option value="Utilitarie">Utilitarie</option>
+              <option value="Berline">Berline</option>
+              <option value="Station Wagon">Station Wagon</option>
+              <option value="Coupé">Coupé</option>
+              <option value="Supercar">Supercar</option>
+              <option value="Cabrio">Cabrio</option>
+              <option value="SUV">SUV</option>
+              <option value="Crossover">Crossover</option>
+              <option value="Monovolume">Monovolume</option>
+              <option value="Pick-Up">Pick-Up</option>
+              <option value="Furgoni">Furgoni</option>
+            </select>
+            <select *ngSwitchCase="'carburante'" formControlName="valore">
+              <option value="Benzina">Benzina</option>
+              <option value="Diesel">Diesel</option>
+              <option value="GPL">GPL</option>
+              <option value="Metano">Metano</option>
+              <option value="Hybrid">Hybrid</option>
+              <option value="Elettrica">Elettrica</option>
+            </select>
+            <input *ngSwitchCase="'chilometraggioDa'" type="number" formControlName="valore" min="0" />
+            <input *ngSwitchCase="'chilometraggioA'" type="number" formControlName="valore" min="0" />
+            <input *ngSwitchCase="'prezzoMin'" type="number" formControlName="valore" min="0" />
+            <input *ngSwitchCase="'prezzoMax'" type="number" formControlName="valore" min="0" />
+            <select *ngSwitchCase="'cambio'" formControlName="valore">
+              <option value="Automatico">Automatico</option>
+              <option value="Manuale">Manuale</option>
+            </select>
+            <select *ngSwitchCase="'porte'" formControlName="valore">
+              <option [value]="3">3</option>
+              <option [value]="5">5</option>
+            </select>
+            <select *ngSwitchCase="'neopatentati'" formControlName="valore">
+              <option [value]="true">Sì</option>
+              <option [value]="false">No</option>
+            </select>
+            <input *ngSwitchDefault type="text" formControlName="valore" />
+          </ng-container>
+          <button type="button" (click)="rimuoviCriterio(i)">Rimuovi</button>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button type="submit">Cerca</button>
+        <button type="button" (click)="close.emit()">Chiudi</button>
+      </div>
+    </form>
+  </div>
+</div>

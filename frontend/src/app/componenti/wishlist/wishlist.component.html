@@ -1,0 +1,74 @@
+<body>
+<div class="background">
+  <div class="totalWishlistContainer">
+    <ng-container *ngIf="wishlistAutoWithDetails.length > 0">
+      <div class="container">
+        <div class="card-table">
+          <h2 class="card-title">Wishlist</h2>
+          <div class="card-auto">
+            <table>
+              <tr>
+                <th>Immagine auto</th>
+                <th>Marca</th>
+                <th>Modello</th>
+                <th>Prezzo</th>
+                <th class="azioni">Azioni</th>
+              </tr>
+              <tbody>
+              <tr *ngFor="let auto of wishlistAutoWithDetails; let i = index">
+                <td class="immagine-auto">
+                  <a [href]="'http://localhost:4200/auto/' + auto.details.id" style="text-decoration: none; color: black;">
+                    <mat-card class="immagine">
+                      <div>
+                        <!-- Verifica se ci sono immagini, altrimenti usa l'immagine di fallback -->
+                        <img
+                          mat-card-image
+                          [src]="auto.details.immagini && auto.details.immagini.length > 0 ? 'data:image/png;base64,' + auto.details.immagini[0].base64 : 'assets/no_images_found.png'"
+                          class="matCardImg"
+                          onerror="this.src='assets/no_images_found.png'">
+                      </div>
+                    </mat-card>
+                  </a>
+                </td>
+                <td>{{ auto.details.marca }}</td>
+                <td>{{ auto.details.modello }}</td>
+                <td>{{ auto.details.prezzo | currency:'EUR':'symbol':'1.2-2' }}</td>
+                <td>
+                  <div>
+                    <button mat-fab class="delete-button" (click)="removeItem(auto)">
+                      <mat-icon>delete</mat-icon>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              </tbody>
+              <tfoot>
+              <tr>
+                <td colspan="3"></td>
+                <td>
+                  <button class="btn svuota-wishlist" (click)="removeAll()">Svuota Wishlist</button>
+                </td>
+              </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="wishlistAutoWithDetails.length === 0">
+      <div class="wishlistVuota">
+        <div class="card">
+          <h5 class="card-title">Wishlist</h5>
+        </div>
+        <div class="center">
+          <img class="immaginewishlistvuota" src="assets/wishlistvuota.jpg" alt="Wishlist vuota">
+          <h3 id="wishlist_vuota">Wishlist vuota!</h3>
+          <h5 id="aggiungi">Aggiungi qualcosa alla tua wishlist</h5>
+          <button mat-button [routerLink]="['/parco_auto']" class="aggiungiOra">Aggiungi ora</button>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>
+</body>

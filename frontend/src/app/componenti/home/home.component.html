@@ -1,0 +1,123 @@
+<body>
+<!-- Pulsante per scorrere verso l'area di autenticazione -->
+<div class="center-button-container">
+  <button class="center-button" routerLink="/">Torna alla home</button>
+</div>
+
+<div class="filtriRicercaContainer">
+  <p id="risultati">
+    <strong style="color: #333;">
+      Risultati: {{autoList.length > 0 ? autoList.length : '0'}}
+    </strong>
+  </p>
+
+  <div class="center-button-container-secondary">
+    <button class="center-button-secondary" (click)="toggleRicercaAvanzata()">Ricerca avanzata</button>
+  </div>
+
+  <form class="formFiltri" [formGroup]="formFiltri">
+    <div class="filtriContainer">
+      <select
+        id="sort"
+        class="orderSelect"
+        formControlName="sort"
+        (change)="tipoSortValueChange($event)"
+        required
+      >
+        <option value="" disabled selected>Ordina per:</option>
+        <option class="optionEntry" value="crescente">Prezzo: crescente</option>
+        <option class="optionEntry" value="decrescente">Prezzo: decrescente</option>
+        <option class="optionEntry" value="A-Z">Alfabetico: A-Z</option>
+        <option class="optionEntry" value="Z-A">Alfabetico: Z-A</option>
+      </select>
+    </div>
+  </form>
+</div>
+
+<!-- Sezione auto -->
+<ng-template *ngIf="!smallDevice; then desktopView else mobileView"></ng-template>
+
+<!-- Vista Desktop -->
+<ng-template #desktopView>
+  <mat-grid-list
+    [cols]="smallDevice ? 2 : 4"
+    gutterSize="25px"
+    rowHeight="470px"
+    class="gridList"
+  >
+    <!-- Contenitore per una riga vuota se non ci sono auto -->
+    <ng-container *ngIf="autoList.length === 0">
+      <div class="empty-row"></div>
+    </ng-container>
+
+    <!-- Iterazione delle auto -->
+    <ng-container *ngFor="let auto of autoList">
+      <a (click)="onAutoClick(auto.id, $event)" style="text-decoration: none; color: black;">
+        <mat-grid-tile class="grid">
+          <mat-card class="cards">
+            <div class="imageContainer">
+              <div *ngIf="auto.immagini && auto.immagini.length > 0; else noImage">
+                <!-- Visualizza solo la prima immagine -->
+                <img
+                  [src]="'data:image/png;base64,' + auto.immagini[0].base64"
+                  class="matCardImg"
+                  onerror="this.src='assets/no_images_found.png'"
+                />
+              </div>
+              <ng-template #noImage>
+                <img src="assets/no_images_found.png" class="matCardImg" />
+              </ng-template>
+            </div>
+            <mat-card-footer>
+              <mat-card-title>{{auto.marca}} {{auto.modello}}</mat-card-title>
+              <mat-card-subtitle>Anno: {{auto.anno}}, Prezzo: {{auto.prezzo}}€</mat-card-subtitle>
+            </mat-card-footer>
+          </mat-card>
+        </mat-grid-tile>
+      </a>
+    </ng-container>
+  </mat-grid-list>
+</ng-template>
+
+<!-- Vista Mobile -->
+<ng-template #mobileView>
+  <div class="mobileAutoContainer">
+    <!-- Contenitore per una riga vuota se non ci sono auto -->
+    <ng-container *ngIf="autoList.length === 0">
+      <div class="empty-row"></div>
+    </ng-container>
+
+    <!-- Iterazione delle auto -->
+    <mat-card class="cards" *ngFor="let auto of autoList">
+      <a href="http://localhost:4200/auto/{{auto.id}}" style="text-decoration: none; color: black;">
+        <div class="imageContainer">
+          <div *ngIf="auto.immagini && auto.immagini.length > 0; else noImage">
+            <!-- Visualizza solo la prima immagine -->
+            <img
+              [src]="'data:image/png;base64,' + auto.immagini[0].base64"
+              class="matCardImg"
+              onerror="this.src='assets/no_images_found.png'"
+            />
+          </div>
+          <ng-template #noImage>
+            <img src="assets/no_images_found.png" class="matCardImg" />
+          </ng-template>
+        </div>
+        <mat-card-footer>
+          <mat-card-title>{{auto.marca}} {{auto.modello}}</mat-card-title>
+          <mat-card-subtitle>Anno: {{auto.anno}}, Prezzo: {{auto.prezzo}}€</mat-card-subtitle>
+        </mat-card-footer>
+      </a>
+    </mat-card>
+  </div>
+</ng-template>
+
+<!-- Mostra il componente di ricerca avanzata se necessario -->
+<app-ricerca
+  *ngIf="showRicercaAvanzata"
+  (close)="toggleRicercaAvanzata()"
+  (searchResults)="aggiornaAutoList($event)"
+></app-ricerca>
+
+<app-footer></app-footer>
+</body>
