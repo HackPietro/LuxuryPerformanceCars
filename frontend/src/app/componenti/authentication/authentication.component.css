@@ -4,21 +4,23 @@ body, html {
   padding: 0;
 }
 
+/* Video di sfondo */
+.background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Adatta il video all'area visibile */
+  z-index: -1; /* Manda il video sullo sfondo */
+}
+
 /* Contenitore principale */
 .container {
   position: relative;
   width: 100%;
   height: 100vh; /* Altezza del contenitore pari all'altezza della finestra */
   overflow: hidden; /* Impedisce lo scroll del contenitore principale */
-}
-
-/* Stile per il logo o sfondo */
-.logo-container {
-  width: 100%;
-  height: 100vh; /* Altezza del contenitore del logo */
-  background-image: url('/assets/background.jpg'); /* Immagine di sfondo */
-  background-size: cover;
-  background-position: center;
 }
 
 /* Contenitore di autenticazione e pulsanti */

@@ -34,6 +34,9 @@ import {WishlistComponent} from "./componenti/wishlist/wishlist.component";
 import {AutoComponent} from "./componenti/auto/auto.component";
 import {Analisi_dei_datiComponent} from "./componenti/analisi_dei_dati/analisi_dei_dati.component";
 import {Gestione_autoComponent} from "./componenti/aggiungi_auto/gestione_auto.component";
+import {
+  Dati_successo_probabilita_venditaComponent
+} from "./componenti/dati_successo_probabilita_vendita/dati_successo_probabilita_vendita.component";
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,6 +50,7 @@ import {Gestione_autoComponent} from "./componenti/aggiungi_auto/gestione_auto.c
     AutoComponent,
     Analisi_dei_datiComponent,
     Gestione_autoComponent,
+    Dati_successo_probabilita_venditaComponent,
 
 
 

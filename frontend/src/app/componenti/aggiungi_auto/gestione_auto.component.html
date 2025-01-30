@@ -8,15 +8,22 @@
     <form [formGroup]="formAggiungiAuto">
 
       <div class="form-group">
-        <input type="text" formControlName="id" placeholder="ID Auto da rimuovere (lascia vuoto per aggiungere un'auto)" />
+        <input
+          type="text"
+          formControlName="id"
+          placeholder="ID Auto da rimuovere (lascia vuoto per aggiungere un'auto)"
+          style="flex: 2; max-width: 350px;" />
         <button type="button" (click)="deleteAuto()" class="btn-remove">Rimuovi</button>
       </div>
 
       <div class="form-group">
-        <input type="text" formControlName="copyId" placeholder="ID Auto da copiare (se vuoi copiare i dati di un'auto esistente)" />
+        <input
+          type="text"
+          formControlName="copyId"
+          placeholder="ID Auto da copiare (se vuoi copiare i dati di un'auto esistente)"
+          style="flex: 2; max-width: 350px;" />
         <button type="button" (click)="onCopyIdChange()" class="btn-copy">Copia</button>
       </div>
-
 
 
       <div class="form-group">
@@ -102,10 +109,10 @@
         <input type="file" (change)="onFileChange($event)" accept="image/*" multiple />
       </div>
 
-      <button type="button" (click)="onSubmit()" class="submit-btn">Salva</button>
-
-      <button type="button" (click)="onCheckProbability()" class="calculate-btn">Calcola Probabilità di Vendita</button>
-      <p *ngIf="successProbability > 0">Probabilità di Vendita: {{ successProbability.toFixed(2) }}%</p>
+      <div class="button-group">
+        <button type="button" (click)="onSubmit()" class="submit-btn">Aggiungi Auto</button>
+        <button type="button" (click)="onCheckProbability()" class="calculate-btn">Calcola Probabilità di Vendita</button>
+      </div>
 
     </form>
   </div>

@@ -21,6 +21,7 @@
         <option value="barChartCarburante">Carburanti</option>
         <option value="barChartCategoria">Categorie</option>
         <option value="stackedBarClickCount">Click</option>
+        <option value="stackedBarSuccessoVendita">Percentuali</option>
       </select>
     </div>
 
@@ -40,6 +41,15 @@
         <option *ngFor="let model of models" [value]="model">{{ model }}</option>
       </select>
     </div>
+
+    <div class="dropdown-container" *ngIf="showIdSelector">
+      <label for="id-select">Seleziona ID:</label>
+      <select id="id-select" (change)="onIdSelect($event)">
+        <option value="" selected disabled>Seleziona un ID</option>
+        <option *ngFor="let id of ids" [value]="id">{{ id }}</option>
+      </select>
+    </div>
+
 
     <!-- Container per i grafici -->
     <div class="charts-wrapper">
@@ -84,6 +94,9 @@
       </div>
       <div class="chart-container" id="stackedBarClickCount-container">
         <canvas id="stackedBarClickCount"></canvas>
+      </div>
+      <div class="chart-container" id="stackedBarSuccessoVendita-container">
+        <canvas id="stackedBarSuccessoVendita"></canvas>
       </div>
     </div>
   </div>

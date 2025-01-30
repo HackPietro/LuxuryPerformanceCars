@@ -63,7 +63,7 @@ export class HomeComponent implements OnInit {
   }
 
   getAllAuto() {
-    this.service.findAllAuto().subscribe({
+    this.service.findAllAutoDisponibili().subscribe({
       next: (auto) => {
         this.autoList = auto;
       },

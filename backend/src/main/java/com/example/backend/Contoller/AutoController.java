@@ -29,9 +29,10 @@ public class AutoController {
     }
 
     @GetMapping("/findAll")
-    public ResponseEntity<List<AutoDto>> findAll() {
-        return autoService.getAllEntries();
-    }
+    public ResponseEntity<List<AutoDto>> findAll() { return autoService.getAllEntries(); }
+
+    @GetMapping("/findAllDisponibili")
+    public ResponseEntity<List<AutoDto>> findAllDisponibili() { return autoService.getAllEntriesDisponibili(); }
 
     @GetMapping("/findCategoryAuto/{categoria}")
     public ResponseEntity<List<AutoDto>> findCategoryAuto(@PathVariable String categoria) {
@@ -96,9 +97,9 @@ public class AutoController {
         return autoService.addAuto(autoDto);
     }
 
-    @DeleteMapping("/{autoId}/elimina")
-    public ResponseEntity<Void> deleteAuto(@PathVariable Long autoId) {
-        return autoService.deleteAuto(autoId);
+    @PatchMapping("/{autoId}/update-disponibilita")
+    public ResponseEntity<Void> updateDisponibilitaAuto(@PathVariable Long autoId, @RequestBody boolean disponibile) {
+        return autoService.updateDisponibilitaAuto(autoId, disponibile);
     }
 
     @DeleteMapping("/{autoId}/elimina-immagine")
@@ -109,6 +110,19 @@ public class AutoController {
         } catch (EntityNotFoundException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
+    }
+
+    @GetMapping("/findIdsByBrandAndModel")
+    public ResponseEntity<List<Long>> findIdsByBrandAndModel(
+            @RequestParam String marca,
+            @RequestParam String modello) {
+        System.out.println("ciao");
+        return autoService.findIdsByBrandAndModel(marca, modello);
+    }
+
+    @GetMapping("/allIdDisponibili")
+    public ResponseEntity<List<Long>> allIdDisponibili() {
+        return autoService.getAllIdDisponibili();
     }
 
 

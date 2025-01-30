@@ -1,0 +1,62 @@
+.popup-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.positive-result {
+  color: green;
+  font-weight: bold;
+}
+
+.negative-result {
+  color: red;
+  font-weight: bold;
+}
+
+h2 {
+  margin-bottom: 15px;
+  color: #333;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+thead th {
+  background-color: #f4f4f4;
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+tbody td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.actions {
+  text-align: right;
+}
+
+button {
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+button:hover {
+  background-color: #135ba1;
+}
+
+.centered-text {
+  text-align: center;
+  font-size: 1.2rem; /* Ingrandisce il testo */
+  margin-top: 20px; /* Aggiunge spazio sopra */
+}
+

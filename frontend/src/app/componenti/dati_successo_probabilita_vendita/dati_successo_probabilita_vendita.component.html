@@ -1,0 +1,27 @@
+<div class="popup-container">
+  <h2>Risultati del Calcolo</h2>
+  <table>
+    <thead>
+    <tr>
+      <th>Parametro</th>
+      <th>Valore Form</th>
+      <th>Valore Atteso</th>
+      <th>Risultato</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let result of data.results">
+      <td>{{ result.parametro }}</td>
+      <td>{{ result.valoreForm }}</td>
+      <td>{{ result.valoreAtteso }}</td>
+      <td [ngClass]="{'positive-result': result.risultato == 'Positivo', 'negative-result': result.risultato == 'Negativo'}">
+        {{ result.risultato }}
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p class="centered-text"><strong>Probabilità di vendita: {{ data.successProbability }}%</strong></p>
+  <div class="actions">
+    <button mat-button mat-dialog-close>Chiudi</button>
+  </div>
+</div>

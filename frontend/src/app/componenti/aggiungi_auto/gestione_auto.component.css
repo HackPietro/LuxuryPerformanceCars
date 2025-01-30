@@ -36,12 +36,12 @@ body {
 .container {
   position: relative;
   z-index: 1;
-  max-width: 400px; /* Ancora più stretto per form compatto */
-  width: 100%;
+  max-width: 400px;
+  width: 90%;
   background-color: rgba(255, 255, 255, 0.85);
   border-radius: 8px;
-  padding: 15px;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
 }
 
 .header {
@@ -49,72 +49,128 @@ body {
 }
 
 .header h2 {
-  font-size: 18px; /* Font più piccolo per il titolo */
+  font-size: 16px;
   color: #333;
 }
 
 hr {
-  margin: 5px auto 10px;
-  width: 40px;
+  margin: 5px auto 8px;
+  width: 30px;
   border: 1px solid gold;
 }
 
 .form-group {
-  margin-bottom: 10px; /* Ulteriore riduzione dello spazio tra i campi */
+  margin-bottom: 5px; /* Spaziatura tra i campi */
+  display: flex;
+  justify-content: center; /* Centra il contenuto orizzontalmente */
+  align-items: center; /* Allinea il contenuto verticalmente */
+  gap: 8px; /* Spaziatura tra gli elementi */
 }
 
 .form-group input,
 .form-group select,
 .form-group textarea {
   width: 100%;
-  padding: 8px; /* Spazio più stretto */
+  padding: 5px; /* Ridotto il padding interno */
   border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 12px; /* Font ridotto per maggiore compattezza */
+  border-radius: 5px;
+  font-size: 11px;
   color: #333;
+  height: 30px; /* Altezza ridotta per input e select */
 }
 
 .form-group textarea {
-  min-height: 70px; /* Ridotto anche l'altezza della textarea */
+  min-height: 100px; /* Ridotto l'altezza minima della textarea */
   resize: vertical;
 }
 
-.form-group select {
-  font-size: 12px; /* Font ridotto anche nei select */
-}
-
 .file-upload input {
-  padding: 6px; /* Più compatto anche il campo file */
+  padding: 5px;
 }
 
-.submit-btn {
-  width: 100%;
-  padding: 10px; /* Ridotto padding del pulsante */
-  background-color: #ff9900;
-  color: white;
-  border: none;
-  font-size: 14px; /* Font più piccolo per il pulsante */
-  border-radius: 6px;
+/* Modifica per i bottoni affiancati */
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.button-group .submit-btn,
+.button-group .calculate-btn {
+  flex: 1;
+}
+
+.btn-remove,
+.btn-copy {
+  flex: 1; /* I pulsanti occupano la stessa larghezza */
+  max-width: 100px; /* Imposta una larghezza massima per evitare pulsanti troppo grandi */
+  padding: 10px; /* Padding interno per dimensioni uniformi */
+  font-size: 12px;
+  border-radius: 5px;
+  text-align: center; /* Centra il testo */
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-.submit-btn:hover {
+.btn-remove {
+  background-color: red; /* Colore di sfondo rosso */
+  color: white; /* Testo bianco */
+  border: none;
+}
+
+.btn-remove:hover {
+  background-color: darkred; /* Colore rosso scuro al passaggio del mouse */
+}
+
+.btn-copy {
+  background-color: #ff9900; /* Colore di sfondo arancione */
+  color: white; /* Testo bianco */
+  border: none;
+}
+
+.btn-copy:hover {
+  background-color: #e68a00; /* Colore arancione scuro al passaggio del mouse */
+}
+
+.submit-btn,
+.calculate-btn {
+  padding: 7px; /* Ridotto il padding dei pulsanti */
+  font-size: 12px;
+  border-radius: 5px;
+  background-color: #ff9900;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover,
+.calculate-btn:hover {
   background-color: #e68a00;
 }
 
 /* Responsività */
 @media (max-width: 600px) {
   .container {
-    width: 85%;
-    padding: 10px; /* Ulteriore riduzione dei margini */
+    padding: 8px;
   }
 
   .form-group input,
   .form-group select,
   .form-group textarea,
-  .submit-btn {
-    font-size: 10px; /* Font più piccolo per dispositivi mobili */
-    padding: 6px;
+  .submit-btn,
+  .calculate-btn {
+    font-size: 10px;
+    padding: 4px; /* Ridotto padding interno per dispositivi mobili */
+    height: 28px; /* Altezza ridotta per input e select */
+  }
+
+  .form-group textarea {
+    min-height: 40px; /* Altezza textarea ridotta su dispositivi mobili */
+  }
+
+  .button-group {
+    flex-direction: column;
+    gap: 5px;
   }
 }

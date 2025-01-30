@@ -20,8 +20,17 @@ export class Analisi_dei_datiComponent implements OnInit {
   models: string[] = [];
   selectedModel: string = '';
   showBrandModelSelector: boolean = false;
+  showIdsField: boolean = false;
+  idsForSuccessoVendita: number[] = [];
+
+  ids: (number | null)[] = []; // Lista degli ID recuperati dal backend
+  selectedId: number | null = null; // ID selezionato
+  showIdSelector = false; // Visibilità del campo per gli ID
+
+
 
   clickCountChart: Chart | undefined; // Dichiarazione della variabile del grafico
+  successoVenditaChart: Chart | undefined;
 
 
 
@@ -40,6 +49,7 @@ export class Analisi_dei_datiComponent implements OnInit {
     this.loadCarburantePercentageChart(); //ok
     this.loadCategoriaPercentageChart(); //ok
     this.loadClickCount();
+    this.loadSuccessoVendita();
   }
 
   onChartSelect(event: Event): void {
@@ -59,8 +69,9 @@ export class Analisi_dei_datiComponent implements OnInit {
     }
 
     // Gestisci la visibilità del selettore della marca
-    this.showBrandSelector = selectedChart === 'stackedBarChartBrandModels' || selectedChart === 'stackedBarClickCount';
-    this.showBrandModelSelector = selectedChart === 'stackedBarClickCount';
+    this.showBrandSelector = selectedChart === 'stackedBarChartBrandModels' || selectedChart === 'stackedBarClickCount' || selectedChart === 'stackedBarSuccessoVendita';
+    this.showBrandModelSelector = selectedChart === 'stackedBarClickCount' || selectedChart === 'stackedBarSuccessoVendita';
+    this.showIdSelector = selectedChart === 'stackedBarSuccessoVendita';
 
     if (selectedChart === 'stackedBarClickCount') {
       // Carica i modelli per la marca selezionata
@@ -68,16 +79,19 @@ export class Analisi_dei_datiComponent implements OnInit {
         this.loadModelsForBrand(this.selectedBrand); // Assicurati di avere un metodo che carica i modelli
       }
     }
+    if (selectedChart !== 'stackedBarSuccessoVendita') {
+      this.selectedBrand = '';
+      this.selectedModel = '';
+      this.ids = [];
+      this.selectedId = null;
+    }
   }
 
   loadModelsForBrand(brand: string): void {
     this.service.getModelliByMarca(brand).subscribe({
       next: (models: string[]) => {
-        // Aggiungi un'opzione vuota come primo elemento
-        this.models = ['', ...models]; // Il primo valore è vuoto, quindi obbliga l'utente a selezionare un modello
-        if (this.models.length === 1) {  // Se l'unico modello è vuoto, resetta la selezione del modello
-          this.selectedModel = '';
-        }
+        this.models = ['', ...models];
+        this.selectedModel = this.models.length > 0 ? this.models[0] : ''; // Imposta il modello predefinito
       },
       error: (err: any) => {
         console.error('Errore nel recupero dei modelli:', err);
@@ -124,6 +138,8 @@ export class Analisi_dei_datiComponent implements OnInit {
     if (this.selectedModel) {
       this.loadClickCount(); // Chiama un metodo per aggiornare il grafico con il modello selezionato
     }
+
+    this.loadIdsForBrandAndModel();
   }
 
   loadClickCount(): void {
@@ -478,12 +494,12 @@ export class Analisi_dei_datiComponent implements OnInit {
             });
           },
           error: (err: any) => {
-            window.alert(`Errore durante il recupero delle marche salvate: ${err.message}`);
+            console.error(`Errore durante il recupero delle marche salvate: ${err.message}`);
           }
         });
       },
       error: (err: any) => {
-        window.alert('Errore durante il recupero delle marche disponibili');
+        console.error('Errore durante il recupero delle marche disponibili');
       }
     });
   }
@@ -1003,6 +1019,77 @@ export class Analisi_dei_datiComponent implements OnInit {
       },
       error: (error) => {
         console.error('Errore nel caricamento dei dati delle categorie:', error);
+      }
+    });
+  }
+
+  loadIdsForBrandAndModel(): void {
+    if (!this.selectedBrand || !this.selectedModel) {
+      return;
+    }
+
+    this.service.findIdsByBrandAndModel(this.selectedBrand, this.selectedModel).subscribe({
+      next: (ids: number[]) => {
+        this.ids = [null, ...ids];
+        this.selectedId = this.ids.length > 0 ? this.ids[0] : null; // Imposta il primo ID come valore predefinito se la lista non è vuota
+        console.log('ID trovati:', ids);
+      },
+      error: (err: any) => {
+        console.error('Errore nel recupero degli ID:', err);
+        this.ids = []; // Reset della lista in caso di errore
+        this.selectedId = null; // Reset del valore selezionato
+      }
+    });
+  }
+
+  onIdSelect(event: Event): void {
+    this.selectedId = Number((event.target as HTMLSelectElement).value);
+    if (this.selectedId) {
+      this.loadSuccessoVendita();
+    }
+  }
+
+  loadSuccessoVendita(): void {
+    if (!this.selectedId) {
+      return;
+    }
+
+    this.service.getSuccessoVenditaById(this.selectedId).subscribe({
+      next: (percentuali: number[]) => {
+        // Distruggi il grafico esistente se c'è
+        if (this.successoVenditaChart) {
+          this.successoVenditaChart.destroy();
+        }
+
+        // Crea un nuovo grafico a montagna (area chart)
+        this.successoVenditaChart = new Chart('stackedBarSuccessoVendita', {
+          type: 'line', // Tipo di grafico
+          data: {
+            labels: percentuali.map((_, index) => `Valore ${index + 1}`), // Etichette dei mesi
+            datasets: [{
+              label: 'Andamento Successo Vendita in %',
+              data: percentuali,
+              backgroundColor: 'rgba(54, 162, 235, 0.2)', // Colore di riempimento
+              borderColor: 'rgba(54, 162, 235, 1)', // Colore del bordo
+              borderWidth: 2,
+              fill: true, // Riempie l'area sotto la linea
+            }]
+          },
+          options: {
+            responsive: true,
+            scales: {
+              y: {
+                beginAtZero: true,
+                ticks: {
+                  stepSize: 10,
+                }
+              }
+            }
+          }
+        });
+      },
+      error: (err: any) => {
+        console.error('Errore nel caricamento dei dati per il grafico:', err);
       }
     });
   }

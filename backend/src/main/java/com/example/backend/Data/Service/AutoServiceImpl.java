@@ -48,6 +48,16 @@ public class AutoServiceImpl implements AutoService {
         return ResponseEntity.ok(autoDtoList);
     }
 
+    @Override
+    public ResponseEntity<List<AutoDto>> getAllEntriesDisponibili() {
+        List<Auto> autoList = autoDao.findAllDisponibili();
+        List<AutoDto> autoDtoList = autoList.stream()
+                .map(this::convertToAutoDto)
+                .collect(Collectors.toList());
+        return ResponseEntity.ok(autoDtoList);
+    }
+
+
     private AutoDto convertToAutoDto(Auto auto) {
         AutoDto autoDto = modelMapper.map(auto, AutoDto.class);
         List<ImmagineAuto> immagini = immagineAutoDao.findByAutoId(auto.getId());
@@ -109,7 +119,7 @@ public class AutoServiceImpl implements AutoService {
         criteri.remove("email");
 
         // Costruisci la query per la ricerca delle auto
-        StringBuilder queryStr = new StringBuilder("SELECT a FROM Auto a WHERE 1=1");
+        StringBuilder queryStr = new StringBuilder("SELECT a FROM Auto a WHERE a.disponibile = true");
         Map<String, Object> parametri = new HashMap<>();
 
         // Aggiungi i criteri dinamicamente
@@ -226,14 +236,36 @@ public class AutoServiceImpl implements AutoService {
         return ResponseEntity.status(HttpStatus.CREATED).body(savedAutoDto);
     }
 
+    @Transactional
     @Override
-    public ResponseEntity<Void> deleteAuto(Long autoId) {
+    public ResponseEntity<Void> updateDisponibilitaAuto(Long autoId, boolean disponibile) {
         if (autoDao.existsById(autoId)) {
-            autoDao.deleteById(autoId);
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();  // 204 No Content, cancellazione riuscita
+            autoDao.updateDisponibile(autoId, disponibile);
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();  // 204 No Content, aggiornamento riuscito
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();  // 404 Not Found, auto non trovata
         }
+    }
+
+    @Override
+    public ResponseEntity<List<Long>> findIdsByBrandAndModel(String marca, String modello) {
+        if (marca == null || marca.trim().isEmpty() || modello == null || modello.trim().isEmpty()) {
+            return ResponseEntity.badRequest().body(Collections.emptyList()); // Risposta 400 se i parametri non sono validi
+        }
+
+        List<Long> ids = autoDao.findIdsByBrandAndModel(marca, modello);
+
+        if (ids.isEmpty()) {
+            return ResponseEntity.noContent().build(); // Risposta 204 se non ci sono risultati
+        }
+
+        return ResponseEntity.ok(ids); // Risposta 200 con la lista degli ID
+    }
+
+    @Override
+    public ResponseEntity<List<Long>> getAllIdDisponibili() {
+        List<Long> ids = autoDao.findAllIdDisponibili(); // Questo restituisce una lista di Long
+        return ResponseEntity.ok(ids); // Restituisci direttamente gli ID
     }
 
 

@@ -61,8 +61,14 @@ export class ServiceService {
       );
   }
 
+  findAllAutoDisponibili(): Observable<Auto[]> {
+    return this.http.get<Auto[]>(`${this.baseUrl}/auto/findAllDisponibili`)
+      .pipe(
+        catchError(this.handleError) // Gestione errore
+      );
+  }
+
   getAutoById(id: number): Observable<Auto> {
-    window.alert("sono qui per ");
     return this.http.get<Auto>(`${this.baseUrl}/auto/get/${id}`)
       .pipe(
         catchError(this.handleError) // Gestione errore
@@ -304,7 +310,6 @@ export class ServiceService {
   }
 
   addImmagineAuto(immagine: { autoId: number, immagineBase64: string }): Observable<any> {
-    window.alert("sono quiiiiii")
     // Crea un oggetto che include l'ID dell'auto e l'immagine in base64
     const body = {
       immagineBase64: immagine.immagineBase64,  // La stringa Base64 dell'immagine
@@ -312,13 +317,11 @@ export class ServiceService {
     return this.http.post(`${this.baseUrl}/auto/${immagine.autoId}/aggiungi-immagine`, body);
   }
 
-  deleteAuto(autoId: number): Observable<any> {
-    window.alert("sto per eliminare l'auto con ID: " + autoId);
-    return this.http.delete(`${this.baseUrl}/auto/${autoId}/elimina`);
+  updateDisponibilitaAuto(autoId: number, disponibile: boolean): Observable<any> {
+    return this.http.patch(`${this.baseUrl}/auto/${autoId}/update-disponibilita`, disponibile);
   }
 
   deleteImmagineAuto(autoId: number): Observable<any> {
-    window.alert("Sto per eliminare tutte le immagini associate all'auto con ID: " + autoId);
     return this.http.delete(`${this.baseUrl}/auto/${autoId}/elimina-immagine`);
   }
 
@@ -332,6 +335,53 @@ export class ServiceService {
         catchError(this.handleError)
       );
   }
+
+  findIdsByBrandAndModel(marca: string, modello: string): Observable<number[]> {
+    const params = new HttpParams()
+      .set('marca', marca)
+      .set('modello', modello);
+
+    return this.http.get<number[]>(`${this.baseUrl}/auto/findIdsByBrandAndModel`, { params })
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  getSuccessoVenditaById(id: number): Observable<number[]> {
+    return this.http.get<number[]>(`${this.baseUrl}/probabilita-vendita/getSuccessoVenditaById/${id}`)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  getMaxNumeroValore(): Observable<number> {
+    return this.http.get<number>(`${this.baseUrl}/probabilita-vendita/getMaxNumeroValore`)
+      .pipe(
+        catchError(this.handleError)
+      )
+  }
+
+  addProbabilitaVendita(numeroValore: number, percentuale: number, autoId: number): Observable<string> {
+    const params = new HttpParams()
+      .set('numeroValore', numeroValore.toString())
+      .set('percentuale', percentuale.toString())
+      .set('autoId', autoId.toString());
+    return this.http.post<string>(`${this.baseUrl}/probabilita-vendita/addProbabilitaVendita`, null, {params})
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  getAllIdAutoDisponibili(): Observable<number[]> {
+    return this.http.get<number[]>(`${this.baseUrl}/auto/allIdDisponibili`)
+      .pipe(
+        catchError(error => {
+          console.error('Errore durante il recupero degli ID delle auto disponibili:', error);
+          return throwError(error); // Propaga l'errore
+        }) // Gestione degli errori
+      );
+  }
+
 
 
 }

@@ -9,6 +9,7 @@ import java.util.Map;
 public interface AutoService {
     void saveOrUpdate(AutoDto autoDto); // Metodo per salvare o aggiornare un'auto
     ResponseEntity<List<AutoDto>> getAllEntries(); // Metodo per ottenere tutte le auto
+    ResponseEntity<List<AutoDto>> getAllEntriesDisponibili(); // Metodo per ottenere tutte le auto disponibili
     ResponseEntity<AutoDto> getById(Long id); // Metodo per ottenere un'auto per ID
     void incrementClickCount(Long autoId);
     ResponseEntity<List<AutoDto>> findCategoryAuto(String categoria); // Metodo per ottenere auto per categoria
@@ -18,7 +19,9 @@ public interface AutoService {
     ResponseEntity<List<String>> getModelliByMarca(String marca);
     ResponseEntity<List<Map<Integer, Integer>>> findByMarcaAndModello(String marca, String modello);
     ResponseEntity<AutoDto> addAuto(AutoDto autoDto);
-    ResponseEntity<Void> deleteAuto(Long autoId);
+    ResponseEntity<Void> updateDisponibilitaAuto(Long autoId, boolean disponibile);
+    ResponseEntity<List<Long>> findIdsByBrandAndModel(String marca, String modello);
+    ResponseEntity<List<Long>> getAllIdDisponibili();
 
 
 }
