@@ -1,258 +1,577 @@
-/* Impostazioni di base */
-* {
-  box-sizing: border-box;
+
+body {
+  background-color: #f0f0f0;
+  background-image: linear-gradient(135deg, #f0f0f0 25%, #e6e6e6 25%, #e6e6e6 50%, #f0f0f0 50%, #f0f0f0 75%, #e6e6e6 75%, #e6e6e6 100%);
+  background-size: 40px 40px;
+  margin: 0;
+  padding: 0;
 }
 
-/* Contenitore principale */
+/* Barra superiore migliorata */
+.top-bar {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(to right, #1a1a1a, #333333);
+  padding: 12px 24px;
+  height: 80px;
+  position: relative;
+  justify-content: flex-start;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border-bottom: 3px solid #d4af37;
+}
+
+/* Stile del logo migliorato */
+.top-logo {
+  height: 45px;
+  width: auto;
+  filter: drop-shadow(0 2px 2px rgba(255, 255, 255, 0.2));
+  transition: transform 0.3s ease;
+}
+
+.top-logo:hover {
+  transform: scale(1.05);
+}
+
+/* Contenitore del bottone, centrato orizzontalmente */
+.center-button-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Pulsante centrato migliorato */
+.center-button {
+  background: rgba(212, 175, 55, 0.2);
+  color: white;
+  border: 2px solid #d4af37;
+  border-radius: 25px;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 10px 25px;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.center-button:hover {
+  color: #ffffff;
+  border-color: #f1d876;
+  background-color: rgba(212, 175, 55, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(212, 175, 55, 0.3);
+}
+
+/* Contenitore principale migliorato */
 .car-ad-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
+  max-width: 1300px;
+  margin: 30px auto;
+  padding: 25px;
+  gap: 30px;
+  background: linear-gradient(to bottom, #2a2a2a, #222222); /* stesso sfondo di related-cars-section */
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  border: 1px solid #444; /* stesso bordo di related-cars-section */
+  position: relative; /* aggiunto per permettere l'uso di ::before */
+  overflow: hidden; /* aggiunto per contenere l'elemento ::before */
 }
 
 .image-section {
   flex: 1;
   max-width: 50%;
-  margin-right: 20px;
 }
 
-/* Carousel immagini */
+/* Carousel immagini migliorato */
 .carousel {
   position: relative;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  border: 3px solid #333;
 }
 
 .car-image {
   width: 100%;
   height: auto;
-  border-radius: 10px;
+  border-radius: 8px;
+  transition: transform 0.5s ease;
 }
 
 .carousel-button {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7);
   color: white;
   border: none;
-  padding: 10px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
   cursor: pointer;
   border-radius: 50%;
+  transition: all 0.3s ease;
+  z-index: 2;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.carousel-button:hover {
+  background-color: #d4af37;
+  transform: translateY(-50%) scale(1.1);
 }
 
 .carousel-button.prev {
-  left: 10px;
+  left: 15px;
 }
 
 .carousel-button.next {
-  right: 10px;
+  right: 15px;
 }
 
-/* Sezione dettagli */
+/* Sezione dettagli migliorata */
 .details-section {
   flex: 1;
   max-width: 45%;
-  padding: 10px;
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  background-color: #2a2a2a;
+  color: #ffffff;
+  transition: none;
+  border: 1px solid #444;
+}
+
+.details-section:hover {
+  transform: none;
 }
 
 .header {
   text-align: center;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #d4af37;
+  padding-bottom: 15px;
+}
+
+.header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.3;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Prezzo evidenziato */
+.header h1 span:last-child {
+  color: #d4af37;
+  font-weight: 700;
 }
 
 .specs-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-  margin-top: 20px;
+  gap: 15px;
+  margin: 25px 0;
+  background-color: #333333;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+  border-left: 4px solid #d4af37;
 }
 
 .spec {
-  font-size: 14px;
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+  background-color: #444444;
+}
+
+.spec:hover {
+  background-color: #555555;
+  transform: translateX(5px);
+}
+
+.spec span {
+  font-weight: 600;
+  color: #d4af37;
+  margin-right: 5px;
 }
 
 .description {
-  margin-top: 20px;
+  margin-top: 25px;
+  background-color: #333333;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+  border-left: 4px solid #d4af37;
 }
 
-/* Area per pulsanti di azione */
+.description h3 {
+  color: #d4af37;
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #444444;
+}
+
+.description p {
+  line-height: 1.6;
+  color: #e0e0e0;
+}
+
+/* Area per pulsanti di azione migliorata */
 .actions {
-  position: relative; /* Ancoriamo il menu flottante al bottone principale */
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 25px;
+  gap: 15px;
+}
+
+.actions {
+  font-size: 28px;
+  font-weight: 700;
+  margin-right: auto; /* Spinge il prezzo a sinistra */
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.price {
+  color: #ffffff; !important;
+  margin-right: auto; /* Spinge il prezzo a sinistra */
+}
+
+.prezzo {
+  color: #d4af37; !important;
 }
 
 /* Pulsante principale */
-.fab-button {
-  width: 56px;
-  height: 56px;
-  background-color: #ff9900;
+.fab-button, .actions button[mat-fab] {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #d4af37, #b8860b);
   color: white;
   padding: 0;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
   border-radius: 50%;
   transition: all 0.3s ease;
   cursor: pointer;
   border: none;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.fab-button:hover {
-  background-color: #e68a00;
+.fab-button:hover, .actions button[mat-fab]:hover {
+  background: linear-gradient(135deg, #f1d876, #d4af37);
+  transform: translateY(-3px) rotate(5deg);
+  box-shadow: 0 8px 15px rgba(212, 175, 55, 0.5);
 }
 
-/* Menu per pulsanti di condivisione, allineati sotto il pulsante principale */
+/* Menu per pulsanti di condivisione */
 .fab-menu {
   position: absolute;
-  top: 70px; /* Distanza per posizionare i pulsanti direttamente sotto il principale */
-  left: 89%; /* Centrato rispetto al pulsante principale */
+  top: 70px;
+  right: 0;
   display: flex;
   flex-direction: column;
-  gap: 10px; /* Spazio tra i pulsanti */
+  gap: 12px;
   align-items: center;
   z-index: 999;
 }
 
-/* Pulsanti di condivisione con la stessa dimensione del pulsante principale */
 .fab-menu button {
-  width: 56px;
-  height: 56px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   background-color: white;
-  border: 1px solid #ccc;
+  border: none;
   color: white;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, background-color 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
 }
 
 .fab-menu button:hover {
-  transform: scale(1.1);
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
 }
 
-/* Colori specifici per ciascun pulsante */
+/* Colori specifici per ciascun pulsante con effetti migliorati */
 .fab-menu .facebookButton {
-  background-color: #3b5998;
+  background: linear-gradient(135deg, #3b5998, #2d4373);
 }
 
 .fab-menu .whatsappButton {
-  background-color: #25d366;
+  background: linear-gradient(135deg, #25d366, #128c7e);
 }
 
 .fab-menu .emailButton {
-  background-color: #0078d4;
+  background: linear-gradient(135deg, #0078d4, #005a9e);
 }
 
-/* Sezione Auto Correlate */
+/* Sezione Auto Correlate migliorata */
 .related-cars-section {
-  margin-top: 40px;
+  margin: 30px auto;
+  padding: 15px;
+  max-width: 1300px;
+  background: linear-gradient(to bottom, #2a2a2a, #222222);
+  border-radius: 15px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  border: 1px solid #444;
+  position: relative;
+  overflow: hidden;
 }
 
+.related-cars-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(to right, #d4af37, #b8860b, #d4af37);
+}
+
+.related-cars-section h2 {
+  margin-bottom: 10px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+  position: relative;
+  padding-bottom: 10px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.related-cars-section h2:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(to right, #d4af37, #b8860b);
+  border-radius: 3px;
+}
+
+/* Contenitore carosello correlati */
+.related-carousel-container {
+  overflow-x: hidden;
+  padding: 5px 0;
+}
+
+/* Griglia per le auto correlate */
 .related-auto-mat {
-  width: 100%;
-}
-
-.related-tile {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  align-items: flex-start;
-  margin: 10px; /* Spaziatura tra le tessere */
+  gap: 20px;
+  margin-top: 10px;
 }
 
+.releated_car-name {
+  font-size: 13px; /* Ridotto da 14px */
+  margin-bottom: 6px; /* Ridotto da 10px */
+  text-align: left;
+}
+
+.releated_car_price {
+  font-size: 18px; /* Ridotto da 20px */
+  font-weight: 700;
+  color: #d4af37;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), transparent);
+  padding: 4px 8px; /* Ridotto da 5px 10px */
+  border-radius: 6px; /* Ridotto da 8px */
+  border-left: 3px solid #d4af37; /* Ridotto da 4px */
+  display: inline-block;
+  margin-top: 4px; /* Ridotto da 6px */
+  text-align: left;
+}
+
+/* Stile delle card correlate migliorato */
 .related-card {
   display: flex;
-  flex-direction: column; /* Posiziona immagine e testo verticalmente */
-  align-items: center;
-  justify-content: flex-start;
+  flex-direction: column;
+  height: 200px;
   width: 100%;
-  max-width: 200px; /* Dimensione fissa per tutte le card */
-  padding: 10px;
-  border: 1px solid #e0e0e0; /* Bordo leggero */
+  max-width: 230px;
   border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Effetto ombra per risalto */
+  border: 1px solid #444;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transition: all 0.4s ease;
+  background-color: #333333;
+  overflow: visible;
+  transform-origin: center;
+  position: relative;
 }
 
 .related-card:hover {
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Aumenta l'ombra al passaggio */
-  transform: scale(1.02); /* Leggero zoom */
-  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(212, 175, 55, 0.3);
+  border-color: #d4af37;
 }
 
-/* Gestione immagini correlate */
-.related-card .imageContainer img {
-  width: 100%; /* Assicura che l'immagine occupi tutta la larghezza del contenitore */
-  height: auto; /* Mantieni le proporzioni originali */
-  max-height: 150px; /* Imposta un limite all'altezza per mantenere un layout uniforme */
-  object-fit: cover; /* Taglia l'immagine se necessario per riempire lo spazio */
-  border-radius: 10px; /* Arrotonda i bordi per un aspetto moderno */
+.related-card:after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 10%;
+  width: 80%;
+  height: 10px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  z-index: -1;
+  filter: blur(4px);
+  transition: all 0.4s ease;
 }
 
+.related-card:hover:after {
+  width: 90%;
+  left: 5%;
+  filter: blur(6px);
+}
+
+/* Contenitore dell'immagine */
 .related-card .imageContainer {
+  position: relative;
+  width: 100%;
+  height: 120px;
   display: flex;
-  justify-content: center;
   align-items: center;
-  overflow: hidden; /* Evita che le immagini fuoriuscano dal contenitore */
-  height: 150px; /* Imposta un'altezza fissa */
+  justify-content: center;
+  background-color: #222222;
+  overflow: hidden;
+  border-radius: 10px 10px 0 0;
+  border-bottom: 2px solid #d4af37;
+}
+
+.related-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.related-card:hover img {
+  transform: scale(1.08);
+}
+
+/* Footer della card */
+.related-card mat-card-footer {
+  padding: 10px;
+  text-align: left;
+  background-color: #333333;
+  border-radius: 0 0 10px 10px;
+  border-top: 1px solid #444;
+}
+
+/* Marca e modello */
+.related-card mat-card-subtitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 5px;
+  text-align: left;
+}
+
+/* Prezzo */
+.related-card mat-card-subtitle:last-child {
+  font-size: 18px;
+  color: #d4af37;
+  font-weight: 700;
+  text-align: left;
 }
 
 /* Footer */
 .footerDiv {
-  margin-top: 40px;
-  width: 100%;
+  margin-top: 50px;
+  background-color: #1a1a1a;
+  padding: 20px 0;
+  border-top: 3px solid #d4af37;
 }
 
-/* Responsive */
+/* Responsività migliorata */
 @media screen and (max-width: 768px) {
   .car-ad-container {
     flex-direction: column;
+    padding: 15px;
   }
 
   .image-section,
   .details-section {
     max-width: 100%;
+    margin-right: 0;
   }
 
-  .fab-menu {
-    bottom: 80px;
+  .image-section {
+    margin-bottom: 20px;
+  }
+
+  .specs-grid {
+    grid-template-columns: 1fr;
   }
 
   .related-auto-mat {
-    grid-template-columns: repeat(2, 1fr); /* Due colonne per dispositivi più piccoli */
-    gap: 15px;
-  }
-
-  .related-card {
-    max-width: 150px; /* Riduci la larghezza per adattarsi meglio */
-  }
-
-  .related-card .imageContainer {
-    height: 100px; /* Altezza fissa più piccola per le immagini */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   }
 }
 
-@media screen and (max-width: 480px) {
-  .related-auto-mat {
-    grid-template-columns: repeat(1, 1fr); /* Una colonna per dispositivi molto piccoli */
-  }
+/* Animazioni per caricamento graduale */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
-  .related-card {
-    max-width: 100%;
-  }
+.car-ad-container {
+  animation: fadeIn 0.6s ease-out;
+}
 
-  .related-card .imageContainer {
-    height: 80px;
-  }
+.related-cars-section {
+  animation: fadeIn 1s ease-out;
+}
+
+/* Effetti di accentuazione aggiuntivi */
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+}
+
+.fab-button:active {
+  animation: pulse 0.8s;
+}
+
+/* Effetto pattern di sfondo sottile */
+.car-ad-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23d4af37' fill-opacity='0.05' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+  opacity: 0.5;
+  z-index: -1;
 }

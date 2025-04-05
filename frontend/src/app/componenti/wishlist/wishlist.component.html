@@ -1,3 +1,7 @@
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+
 <body>
 <div class="background">
   <div class="totalWishlistContainer">
@@ -35,16 +39,17 @@
                 <td>{{ auto.details.prezzo | currency:'EUR':'symbol':'1.2-2' }}</td>
                 <td>
                   <div>
-                    <button mat-fab class="delete-button" (click)="removeItem(auto)">
-                      <mat-icon>delete</mat-icon>
+                    <button class="delete-button" (click)="removeItem(auto)">
+                      <i class="fa-solid fa-trash"></i>
                     </button>
+
                   </div>
                 </td>
               </tr>
               </tbody>
               <tfoot>
               <tr>
-                <td colspan="3"></td>
+                <td colspan="4"></td>
                 <td>
                   <button class="btn svuota-wishlist" (click)="removeAll()">Svuota Wishlist</button>
                 </td>
@@ -59,12 +64,11 @@
     <ng-container *ngIf="wishlistAutoWithDetails.length === 0">
       <div class="wishlistVuota">
         <div class="card">
-          <h5 class="card-title">Wishlist</h5>
+          <h5 class="card-title">Wishlist vuota!</h5>
         </div>
         <div class="center">
-          <img class="immaginewishlistvuota" src="assets/wishlistvuota.jpg" alt="Wishlist vuota">
-          <h3 id="wishlist_vuota">Wishlist vuota!</h3>
-          <h5 id="aggiungi">Aggiungi qualcosa alla tua wishlist</h5>
+          <img class="immaginewishlistvuota" src="assets/wishlistvuota.png" alt="Wishlist vuota">
+          <h5 id="aggiungi">Aggiungi un'auto alla tua wishlist!</h5>
           <button mat-button [routerLink]="['/parco_auto']" class="aggiungiOra">Aggiungi ora</button>
         </div>
       </div>

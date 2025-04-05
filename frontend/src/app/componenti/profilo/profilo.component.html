@@ -1,6 +1,9 @@
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+
 <body>
 <div class="background">
-  <div class="firstRow" [ngStyle]="{'display': smallDevice ? 'block' : 'content'}">
     <div class="container">
       <h1>Profilo utente </h1>
       <div class="profile-info">
@@ -20,7 +23,8 @@
           <label for="password">Password:</label>
           <div class="password-input-container">
             <input id="password" [type]="showPassword ? 'text' : 'password'" [(ngModel)]="passwordValue" [disabled]="!isEditing">
-            <mat-icon class="toggle-password-icon" (click)="togglePasswordVisibility()">{{ showPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+            <i class="fa-solid" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"
+               (click)="togglePasswordVisibility()"></i>
           </div>
         </div>
         <div class="field" style="pointer-events: none;">
@@ -32,7 +36,6 @@
           <button class="applyContent" (click)="sendToServer()" [disabled]="!isEditing">Applica</button>
         </div>
       </div>
-    </div>
   </div>
 </div>
 </body>

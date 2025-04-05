@@ -107,7 +107,7 @@ export class AutoComponent implements OnInit {
     this.service.getCategoryAuto(this.categoria).subscribe({
       next: (auto) => {
         // Filtra l'auto corrente dalla lista delle auto correlate
-        auto = auto.filter(auto => auto.id !== this.autoId);
+        auto = auto.filter(auto => auto.id !== this.autoId && auto.disponibile);
         this.autoCorrelate = auto;
 
         this.autoCorrelate.forEach((auto) => {

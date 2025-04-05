@@ -165,7 +165,7 @@ export class Analisi_dei_datiComponent implements OnInit {
           data: {
             labels: labels,
             datasets: [{
-              label: 'Click Count',
+              label: 'Numero di Click',
               data: values,
               backgroundColor: 'rgba(75, 192, 192, 0.2)',
               borderColor: 'rgba(75, 192, 192, 1)',
@@ -223,7 +223,7 @@ export class Analisi_dei_datiComponent implements OnInit {
           labels: minPricesData,
           datasets: [
             {
-              label: 'Prezzi Minimi (Frequenza)',
+              label: 'Prezzi Minimi in Euro',
               data: minCounts,
               backgroundColor: 'rgba(75, 192, 192, 0.5)',
               borderColor: 'rgba(75, 192, 192, 1)',
@@ -234,7 +234,7 @@ export class Analisi_dei_datiComponent implements OnInit {
         options: {
           responsive: true,
           scales: {
-            x: { title: { display: true, text: 'Prezzi Minimi' } },
+            x: { title: { display: true, text: 'Prezzi Minimi in Euro' } },
             y: {
               beginAtZero: true,
               title: { display: true, text: 'Frequenza di ricerca' },
@@ -254,7 +254,7 @@ export class Analisi_dei_datiComponent implements OnInit {
           labels: maxPricesData,
           datasets: [
             {
-              label: 'Prezzi Massimi (Frequenza)',
+              label: 'Prezzi Massimi in Euro',
               data: maxCounts,
               backgroundColor: 'rgba(153, 102, 255, 0.5)',
               borderColor: 'rgba(153, 102, 255, 1)',
@@ -265,7 +265,7 @@ export class Analisi_dei_datiComponent implements OnInit {
         options: {
           responsive: true,
           scales: {
-            x: { title: { display: true, text: 'Prezzi Massimi' } },
+            x: { title: { display: true, text: 'Prezzi Massimi in Euro' } },
             y: {
               beginAtZero: true,
               title: { display: true, text: 'Frequenza di ricerca' },
@@ -470,7 +470,7 @@ export class Analisi_dei_datiComponent implements OnInit {
                 labels: brandLabels,
                 datasets: [
                   {
-                    label: 'Frequenza Marche',
+                    label: 'Marche',
                     data: brandCounts,
                     backgroundColor: 'rgba(54, 162, 235, 0.5)',
                     borderColor: 'rgba(54, 162, 235, 1)',
@@ -624,7 +624,7 @@ export class Analisi_dei_datiComponent implements OnInit {
             labels: minKm,
             datasets: [
               {
-                label: 'Chilometraggio Minimo (Frequenza)',
+                label: 'Chilometraggi Minimi in Km',
                 data: Array.from(minKmCounts.values()),
                 backgroundColor: 'rgba(75, 192, 192, 0.5)',
                 borderColor: 'rgba(75, 192, 192, 1)',
@@ -645,7 +645,7 @@ export class Analisi_dei_datiComponent implements OnInit {
               }
             },
             scales: {
-              x: { title: { display: true, text: 'Chilometraggio Minimo (km)' } },
+              x: { title: { display: true, text: 'Chilometraggi Minimi in Km' } },
               y: {
                 beginAtZero: true,
                 title: { display: true, text: 'Frequenza di ricerca' },
@@ -676,7 +676,7 @@ export class Analisi_dei_datiComponent implements OnInit {
             labels: maxKm,
             datasets: [
               {
-                label: 'Chilometraggio Massimo (Frequenza)',
+                label: 'Chilometraggi Massimi in Km',
                 data: Array.from(maxKmCounts.values()),
                 backgroundColor: 'rgba(153, 102, 255, 0.5)',
                 borderColor: 'rgba(153, 102, 255, 1)',
@@ -697,7 +697,7 @@ export class Analisi_dei_datiComponent implements OnInit {
               }
             },
             scales: {
-              x: { title: { display: true, text: 'Chilometraggio Massimo (km)' } },
+              x: { title: { display: true, text: 'Chilometraggi Massimi in Km' } },
               y: {
                 beginAtZero: true,
                 title: { display: true, text: 'Frequenza di ricerca' },
@@ -743,7 +743,7 @@ export class Analisi_dei_datiComponent implements OnInit {
             labels: yearFrom,
             datasets: [
               {
-                label: 'Anno Da (Frequenza)',
+                label: 'Anni Minimi',
                 data: Array.from(yearFromCounts.values()),
                 backgroundColor: 'rgba(255, 159, 64, 0.5)',
                 borderColor: 'rgba(255, 159, 64, 1)',
@@ -764,7 +764,7 @@ export class Analisi_dei_datiComponent implements OnInit {
               }
             },
             scales: {
-              x: { title: { display: true, text: 'Anno Da' } },
+              x: { title: { display: true, text: 'Anni Minimi' } },
               y: {
                 beginAtZero: true,
                 title: { display: true, text: 'Frequenza di ricerca' },
@@ -795,7 +795,7 @@ export class Analisi_dei_datiComponent implements OnInit {
             labels: yearTo,
             datasets: [
               {
-                label: 'Anno A (Frequenza)',
+                label: 'Anni Massimi',
                 data: Array.from(yearToCounts.values()),
                 backgroundColor: 'rgba(153, 102, 255, 0.5)',
                 borderColor: 'rgba(153, 102, 255, 1)',
@@ -816,7 +816,7 @@ export class Analisi_dei_datiComponent implements OnInit {
               }
             },
             scales: {
-              x: { title: { display: true, text: 'Anno A' } },
+              x: { title: { display: true, text: 'Anni Massimi' } },
               y: {
                 beginAtZero: true,
                 title: { display: true, text: 'Frequenza di ricerca' },
@@ -940,7 +940,7 @@ export class Analisi_dei_datiComponent implements OnInit {
             labels: carburanteLabels,
             datasets: [
               {
-                label: 'Distribuzione Carburante',
+                label: 'Carburanti',
                 data: carburanteCounts,
                 backgroundColor: 'rgba(75, 192, 192, 0.5)',
                 borderColor: 'rgba(75, 192, 192, 1)',
@@ -994,7 +994,7 @@ export class Analisi_dei_datiComponent implements OnInit {
             labels: categoriaLabels,
             datasets: [
               {
-                label: 'Distribuzione Categoria',
+                label: 'Categorie',
                 data: categoriaCounts,
                 backgroundColor: 'rgba(153, 102, 255, 0.5)',
                 borderColor: 'rgba(153, 102, 255, 1)',

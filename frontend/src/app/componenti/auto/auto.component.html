@@ -1,3 +1,14 @@
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+
+<div class="top-bar">
+  <img src="/assets/logo.png" alt="Logo" class="top-logo">
+  <div class="center-button-container">
+    <button class="center-button" routerLink="/">Torna alla home</button>
+  </div>
+</div>
+
 <div class="car-ad-container">
   <!-- Colonna Immagine -->
   <div class="image-section">
@@ -16,7 +27,10 @@
   <div class="details-section">
     <!-- Titolo e prezzo -->
     <div class="header">
-      <h1>{{marca}} {{modello}} - {{prezzo}}€</h1>
+      <h1>
+        <span *ngIf="auth.isAdmin()">ID: {{ autoId }} - </span>
+        {{ marca }} {{ modello }}
+      </h1>
     </div>
 
     <!-- Specifiche del veicolo -->
@@ -31,7 +45,7 @@
         <span>Cambio:</span> {{cambio}}
       </div>
       <div class="spec">
-        <span>Chilometraggio:</span> {{chilometraggio}} km
+        <span>Chilometraggio:</span> {{chilometraggio}}
       </div>
       <div class="spec">
         <span>Cilindrata:</span> {{cilindrata}} cc
@@ -41,6 +55,9 @@
       </div>
       <div class="spec">
         <span>Neopatentati:</span> {{neopatentati ? 'Sì' : 'No'}}
+      </div>
+      <div class="spec">
+        <span>Categoria:</span> {{categoria}}
       </div>
     </div>
 
@@ -52,13 +69,14 @@
 
     <!-- Wishlist e condivisione -->
     <div class="actions">
+      <div class="prezzo"> Prezzo: </div>
+      <div class="price"> {{ prezzo | number: '1.0-2' }} €</div>
       <button mat-fab *ngIf="auth.isLoggedIn$ | async" (click)="addToWishlist()" title="Aggiungi alla wishlist">
-        <mat-icon>favorite</mat-icon>
+        <i class="fa-solid fa-heart"></i> <!-- Icona cuore di Font Awesome -->
       </button>
 
-      <!-- Pulsante Condividi con il menu a discesa -->
       <button mat-fab class="fab-button" (click)="shareAction()" title="Condividi prodotto">
-        <mat-icon>share</mat-icon>
+        <i class="fa-solid fa-share-alt"></i> <!-- Icona condivisione di Font Awesome -->
       </button>
       <div class="fab-menu" *ngIf="menuOpen">
         <button class="facebookButton" mat-button (click)="shareTo('facebook')">
@@ -79,7 +97,7 @@
 <div class="related-cars-section">
   <h2>Auto Correlate:</h2>
   <div class="related-carousel-container">
-    <mat-grid-list [cols]="5" gutterSize="25px" rowHeight="470px" class="related-auto-mat">
+    <mat-grid-list [cols]="5" gutterSize="25px" rowHeight="370px" class="related-auto-mat">
       <mat-grid-tile *ngFor="let auto of autoCorrelate" class="related-tile">
         <a [href]="'/auto/' + auto.id" style="text-decoration: none; color: black;">
           <mat-card class="related-card">
@@ -97,9 +115,8 @@
               </ng-template>
             </div>
             <mat-card-footer>
-              <mat-card-title>{{auto.marca}}</mat-card-title>
-              <mat-card-subtitle>{{auto.modello}}</mat-card-subtitle>
-              <mat-card-title>{{auto.prezzo}}€</mat-card-title>
+              <mat-card-subtitle class = "releated_car-name">{{auto.marca}} {{auto.modello}}</mat-card-subtitle>
+              <mat-card-subtitle class = "releated_car_price">{{ prezzo | number: '1.0-2' }} €</mat-card-subtitle>
             </mat-card-footer>
           </mat-card>
         </a>
@@ -108,7 +125,5 @@
   </div>
 </div>
 
-<!-- Footer -->
-<div class="footerDiv">
-  <app-footer></app-footer>
-</div>
+<app-footer></app-footer>
+

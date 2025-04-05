@@ -1,0 +1,590 @@
+body {
+  height: auto;
+  background-color: #EAEDED;
+}
+
+/* Barra superiore */
+.top-bar {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(to right, #1a1a1a, #333333);
+  padding: 12px 24px;
+  height: 80px;
+  position: relative;
+  justify-content: flex-start;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border-bottom: 3px solid #d4af37;
+}
+
+/* Stile del logo */
+.top-logo {
+  height: 45px;
+  width: auto;
+  filter: drop-shadow(0 2px 2px rgba(255, 255, 255, 0.2));
+  transition: transform 0.3s ease;
+}
+
+.top-logo:hover {
+  transform: scale(1.05);
+}
+
+/* Contenitore del bottone, centrato orizzontalmente */
+.center-button-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Pulsante centrato */
+.center-button {
+  background: rgba(212, 175, 55, 0.2);
+  color: white;
+  border: 2px solid #d4af37;
+  border-radius: 25px;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 10px 25px;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.center-button:hover {
+  color: #ffffff;
+  border-color: #f1d876;
+  background-color: rgba(212, 175, 55, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(212, 175, 55, 0.3);
+}
+
+/* Barra di ricerca e risultati */
+.filtriRicercaContainer {
+  display: flex;
+  align-items: center;
+  margin: 20px;
+  padding: 15px;
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: relative;
+  justify-content: space-between;
+  border-left: 4px solid #d4af37;
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Allinea il numero dei risultati a sinistra */
+#risultati {
+  font-size: 18px;
+  margin: 0;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Posiziona il pulsante di Ricerca Avanzata al centro dello schermo */
+.center-button-container-secondary {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.center-button-secondary {
+  background: linear-gradient(135deg, #d4af37, #b8860b);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 28px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.5px;
+}
+
+.center-button-secondary:hover {
+  background: linear-gradient(135deg, #f1d876, #d4af37);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+}
+
+/* Form di ordinamento */
+.formFiltri {
+  display: flex;
+  margin-left: auto;
+  align-items: center;
+}
+
+.filtriContainer {
+  display: flex;
+  align-items: center;
+}
+
+.orderSelect {
+  width: 220px !important;
+  padding: 12px 15px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23d4af37' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 40px;
+}
+
+.optionEntry {
+  padding: 8px;
+}
+
+.orderSelect:focus {
+  outline: none;
+  border-color: #d4af37;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.3);
+}
+
+/* PARTE CARDS MIGLIORATA */
+.mat-grid-list {
+  display: flex;
+  flex-wrap: wrap;
+  overflow: visible;
+  justify-content: center;
+  margin: 30px;
+  gap: 25px;
+}
+
+.mat-grid-tile {
+  animation: fadeInUp 0.5s ease-out forwards;
+  animation-delay: calc(0.1s * var(--index, 0));
+}
+
+.cards {
+  width: 100%;
+  border-radius: 16px;
+  border: 1px solid rgba(224, 224, 224, 0.5) !important;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  background-color: #ffffff;
+  overflow: visible;
+  transform-origin: center;
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  animation: fadeIn 0.6s ease-out;
+}
+
+.cards:hover {
+  cursor: pointer;
+  border: 2px solid #d4af37 !important;
+  transform: translateY(-12px) scale(1.03);
+  box-shadow: 0 15px 30px rgba(212, 175, 55, 0.25);
+}
+
+/* Effetto ombra migliorato */
+.cards:after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 10%;
+  width: 80%;
+  height: 12px;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 50%;
+  z-index: -1;
+  filter: blur(5px);
+  transition: all 0.4s ease;
+  opacity: 0;
+}
+
+.cards:hover:after {
+  opacity: 0.8;
+  width: 90%;
+  left: 5%;
+  filter: blur(8px);
+}
+
+/* Contenitore dell'immagine - MODIFICATO */
+.imageContainer {
+  position: relative;
+  width: 100%;
+  height: 300px; /* Aumentato da 250px per immagini più grandi */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg, #f8f9fa, #e9ecef);
+  border-bottom: 1px solid #e0e0e0;
+  overflow: hidden;
+  border-radius: 16px 16px 0 0;
+}
+
+/* Effetto immagine migliorato */
+.matCardImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.cards:hover .matCardImg {
+  transform: scale(1.1);
+}
+
+/* Footer della card migliorato */
+mat-card-footer {
+  padding: 15px; /* Ridotto da 20px */
+  text-align: left;
+  background-color: #fff;
+  border-radius: 0 0 16px 16px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Intestazione card migliorata */
+.card-header {
+  margin-bottom: 10px; /* Ridotto da 15px */
+  border-bottom: 1px solid rgba(212, 175, 55, 0.3); /* Bordo più sottile */
+  padding-bottom: 8px; /* Ridotto da 10px */
+}
+
+/* MODIFICATO: Titolo più piccolo */
+mat-card-title {
+  font-size: 16px; /* Ridotto da 18px */
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 5px; /* Ridotto da 8px */
+  letter-spacing: 0.3px;
+}
+
+mat-card-subtitle {
+  font-size: 13px; /* Ridotto da 14px */
+  color: #666;
+  margin-bottom: 6px; /* Ridotto da 10px */
+}
+
+/* Prezzo auto stilizzato - MODIFICATO */
+.prezzoAuto {
+  font-size: 18px; /* Ridotto da 20px */
+  font-weight: 700;
+  color: #d4af37;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), transparent);
+  padding: 4px 8px; /* Ridotto da 5px 10px */
+  border-radius: 6px; /* Ridotto da 8px */
+  border-left: 3px solid #d4af37; /* Ridotto da 4px */
+  display: inline-block;
+  margin-top: 4px; /* Ridotto da 6px */
+  text-align: left;
+}
+
+/* Dettagli auto migliorati - MODIFICATO */
+.auto-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px; /* Ridotto da 8px */
+  margin-top: 6px; /* Ridotto da 8px */
+}
+
+/* MODIFICATO: Dettagli più compatti */
+.detail-item {
+  padding: 4px; /* Ridotto da 6px */
+  background-color: #f8f9fa;
+  border-radius: 6px; /* Ridotto da 8px */
+  font-size: 12px; /* Ridotto da 13px */
+  transition: all 0.3s ease;
+}
+
+.detail-item:hover {
+  background-color: rgba(212, 175, 55, 0.1);
+  transform: translateX(3px);
+}
+
+.detail-label {
+  font-weight: 600;
+  color: #555;
+  margin-right: 5px;
+}
+
+/* Stile per le icone nei dettagli - MODIFICATO */
+.detail-icon {
+  font-size: 14px; /* Ridotto da 16px */
+  margin-right: 4px; /* Ridotto da 5px */
+  color: #d4af37;
+  vertical-align: middle;
+}
+
+
+  /* Stile per il bottone di visualizzazione */
+
+  .card-action {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+  }
+
+  /* MODIFICATO: Bottone visualizza più piccolo */
+
+  .view-details-button {
+    background: linear-gradient(135deg, #333333, #1a1a1a);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 6px 16px; /* Ridotto da 8px 20px */
+    font-size: 13px; /* Ridotto da 14px */
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+  }
+
+  .cards:hover .view-details-button {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .view-details-button:hover {
+    background: linear-gradient(135deg, #d4af37, #b8860b);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Immagine di prodotto non trovato */
+
+  #productNotFound {
+    display: block;
+    margin: 40px auto;
+    width: 50%;
+    max-width: 400px;
+    max-height: 400px;
+    padding: 20px;
+    opacity: .8;
+  }
+
+  /* Stile per il contatore di immagini */
+
+  .image-count {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  /* Stile migliorato per empty state */
+
+  .empty-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    padding: 60px 0;
+    background-color: rgba(248, 248, 248, 0.8);
+    border-radius: 16px;
+    border: 2px dashed rgba(212, 175, 55, 0.5);
+    margin: 40px auto;
+    max-width: 800px;
+    animation: fadeInUp 0.5s ease-out;
+  }
+
+  .empty-row h3 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #555;
+    margin: 15px 0 10px;
+  }
+
+  .empty-row p {
+    font-size: 16px;
+    color: #777;
+    max-width: 80%;
+    margin-bottom: 20px;
+  }
+
+  .empty-icon {
+    font-size: 60px;
+    color: #d4af37;
+    opacity: 0.6;
+  }
+
+  .empty-icon mat-icon {
+    font-size: 60px;
+    width: 60px;
+    height: 60px;
+  }
+
+  .retry-button {
+    background-color: #f8f8f8;
+    border: 2px solid #d4af37;
+    color: #666;
+    border-radius: 25px;
+    padding: 8px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.3s ease;
+  }
+
+  .retry-button:hover {
+    background-color: rgba(212, 175, 55, 0.1);
+    color: #333;
+    transform: translateY(-2px);
+  }
+
+  /* Animazioni migliorate */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Stile per vista mobile */
+
+  .mobileAutoContainer {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  /* RISPONDITIVITÀ */
+  @media screen and (max-width: 600px) {
+    .mat-grid-list {
+      margin: 15px;
+      gap: 15px;
+    }
+
+    .cards {
+      height: 320px;
+    }
+
+    .imageContainer {
+      height: 220px; /* Aumentato per mobile */
+    }
+
+    .center-button-secondary {
+      font-size: 14px;
+      padding: 10px 20px;
+    }
+
+    .auto-details {
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+
+    .detail-item {
+      padding: 6px;
+      font-size: 13px;
+    }
+
+    mat-card-title {
+      font-size: 16px; /* Ridotto ulteriormente per mobile */
+    }
+
+    .prezzoAuto {
+      font-size: 18px;
+    }
+
+    .imageContainer {
+      width: 110px;
+      height: 110px;
+      margin: 10px;
+    }
+
+    .matCardImg {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    mat-card-title {
+      font-size: 14px;
+    }
+
+    mat-card-subtitle {
+      font-size: 12px;
+    }
+
+    .formFiltri {
+      transform: scale(0.9);
+    }
+
+    .orderSelect {
+      width: 250px;
+    }
+
+    #risultati {
+      font-size: 14px;
+    }
+
+    .top-bar {
+      height: 70px;
+      padding: 10px 15px;
+    }
+
+    .center-button {
+      font-size: 16px;
+      padding: 8px 20px;
+    }
+
+    .empty-row {
+      padding: 40px 0;
+    }
+
+    .empty-row h3 {
+      font-size: 20px;
+    }
+
+    .empty-row p {
+      font-size: 14px;
+    }
+
+    .empty-icon mat-icon {
+      font-size: 40px;
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  @media screen and (min-width: 601px) and (max-width: 1500px) {
+    .mat-grid-list {
+      width: 1450px;
+    }
+  }
+

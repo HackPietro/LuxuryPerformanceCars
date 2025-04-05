@@ -1,27 +1,27 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './componenti/home/home.component';
-import { AuthenticationComponent } from './componenti/authentication/authentication.component';
+import { Parco_auto } from './componenti/parco_auto/parco_auto';
+import { Home } from './componenti/home/home';
 import { Gestione_utentiComponent } from './componenti/gestione_utenti/gestione_utenti.component';
 import { ProfiloComponent } from './componenti/profilo/profilo.component';
 import { WishlistComponent } from './componenti/wishlist/wishlist.component';
 import { AutoComponent } from './componenti/auto/auto.component';
 import { Analisi_dei_datiComponent } from './componenti/analisi_dei_dati/analisi_dei_dati.component';
-import { Gestione_autoComponent } from './componenti/aggiungi_auto/gestione_auto.component';
+import { Gestione_autoComponent } from './componenti/gestione_auto/gestione_auto.component';
 import { RicercaComponent } from './componenti/ricerca/ricerca.component'; // Importa il componente modale
 
 const routes: Routes = [
   {
     path: '',
-    component: AuthenticationComponent,
+    component: Home,
     children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
-      { path: 'home', component: AuthenticationComponent },
+      { path: 'home', component: Home },
     ],
   },
   {
     path: 'parco_auto',
-    component: HomeComponent,
+    component: Parco_auto,
     children: [
       { path: 'ricerca', component: RicercaComponent } // Modale o filtro avanzato
     ]

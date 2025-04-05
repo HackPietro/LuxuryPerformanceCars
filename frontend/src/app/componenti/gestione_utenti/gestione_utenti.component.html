@@ -20,7 +20,7 @@
       <form class="TipologiaUserForm" [formGroup]="TypeUserForm" (ngSubmit)="setUserType()">
         <input type="text" formControlName="email" placeholder="Email Utente" required>
         <select formControlName="isAdmin" required>
-          <option [ngValue]="true">Utente Admin</option>
+          <option [ngValue]="true">Utente Amministratore</option>
           <option [ngValue]="false">Utente Normale</option>
         </select>
         <button type="submit">Applica</button>

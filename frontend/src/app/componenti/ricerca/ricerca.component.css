@@ -1,19 +1,20 @@
-/* Sfondo overlay */
+/* Sfondo overlay con effetto sfocato migliorato */
 .overlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  backdrop-filter: blur(5px); /* Effetto sfocato */
+  backdrop-filter: blur(8px);
+  animation: fadeIn 0.4s ease-out;
 }
 
-/* Contenitore della finestra */
+/* Contenitore della finestra con stile armonizzato */
 .modal {
   background: #ffffff;
   padding: 24px;
@@ -22,8 +23,25 @@
   max-height: 85vh;
   overflow-y: auto;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-  font-family: 'Arial', sans-serif;
+  font-family: 'Roboto', sans-serif;
   position: relative;
+  border: 1px solid #444;
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* Pattern di sfondo sottile */
+.modal::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23d4af37' fill-opacity='0.05' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+  opacity: 0.5;
+  z-index: -1;
+  border-radius: 12px;
 }
 
 /* Titolo della finestra */
@@ -31,10 +49,12 @@
   margin: 0;
   font-size: 1.5em;
   color: #333;
-  border-bottom: 2px solid #f0f0f0;
+  border-bottom: 2px solid #d4af37;
   padding-bottom: 10px;
   margin-bottom: 20px;
   text-align: center;
+  font-weight: 500;
+  letter-spacing: 0.5px;
 }
 
 /* Contenitore dei criteri selezionabili */
@@ -47,23 +67,26 @@
   font-weight: bold;
   margin-bottom: 5px;
   color: #555;
+  letter-spacing: 0.5px;
 }
 
 .criteri-selezionabili select {
   width: 100%;
-  padding: 8px;
+  padding: 10px;
   font-size: 1em;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  background-color: #f9f9f9;
+  border: 1px solid #d4af37;
+  border-radius: 25px;
+  background-color: rgba(212, 175, 55, 0.05);
   color: #333;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .criteri-selezionabili select:focus {
   outline: none;
-  border-color: #007bff;
-  background-color: #fff;
+  border-color: #f1d876;
+  background-color: rgba(212, 175, 55, 0.1);
+  box-shadow: 0 4px 8px rgba(212, 175, 55, 0.2);
 }
 
 /* Sezione dei criteri selezionati */
@@ -75,6 +98,7 @@
   display: flex;
   align-items: center;
   margin-bottom: 12px;
+  animation: fadeIn 0.8s ease-out;
 }
 
 .criterio label {
@@ -82,41 +106,51 @@
   font-weight: bold;
   font-size: 0.9em;
   color: #555;
+  letter-spacing: 0.5px;
 }
 
 .criterio input,
 .criterio select {
   flex: 2.5;
-  padding: 8px;
+  padding: 10px;
   margin-right: 10px;
   font-size: 0.9em;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  background-color: #f9f9f9;
+  border: 1px solid #d4af37;
+  border-radius: 25px;
+  background-color: rgba(212, 175, 55, 0.05);
   color: #333;
+  transition: all 0.3s ease;
 }
 
 .criterio input:focus,
 .criterio select:focus {
   outline: none;
-  border-color: #007bff;
-  background-color: #fff;
+  border-color: #f1d876;
+  background-color: rgba(212, 175, 55, 0.1);
+  box-shadow: 0 4px 8px rgba(212, 175, 55, 0.2);
 }
 
 /* Pulsante per rimuovere i criteri */
 .criterio button {
-  background-color: #f44336;
+  background: linear-gradient(135deg, #1a1a1a, #333333);
   color: white;
-  border: none;
-  border-radius: 6px;
-  padding: 6px 12px;
+  border: 1px solid #444;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
   font-size: 0.85em;
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .criterio button:hover {
-  background-color: #d32f2f;
+  background: linear-gradient(135deg, #d4af37, #b8860b);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(212, 175, 55, 0.4);
 }
 
 /* Pulsanti azione */
@@ -128,31 +162,42 @@
 }
 
 .actions button {
-  padding: 10px 16px;
+  padding: 10px 20px;
   font-size: 1em;
-  border: none;
-  border-radius: 8px;
+  border-radius: 25px;
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .actions button[type="submit"] {
-  background-color: #007bff;
+  background: rgba(212, 175, 55, 0.8);
   color: white;
+  border: 2px solid #d4af37;
 }
 
 .actions button[type="submit"]:hover {
-  background-color: #0056b3;
+  background: rgba(212, 175, 55, 1);
+  border-color: #f1d876;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(212, 175, 55, 0.3);
 }
 
 .actions button[type="button"] {
-  background-color: #6c757d;
+  background: #dc3545; /* Rosso */
   color: white;
+  border: 2px solid #b02a37; /* Bordo rosso più scuro */
 }
 
 .actions button[type="button"]:hover {
-  background-color: #495057;
+  background: #c82333; /* Rosso più scuro per hover */
+  border-color: #a71d2a;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(220, 53, 69, 0.3);
 }
+
 
 /* Barra di scorrimento personalizzata */
 .modal::-webkit-scrollbar {
@@ -160,10 +205,61 @@
 }
 
 .modal::-webkit-scrollbar-thumb {
-  background-color: #007bff;
+  background-color: #d4af37;
   border-radius: 4px;
 }
 
 .modal::-webkit-scrollbar-track {
   background-color: #f0f0f0;
+}
+
+/* Animazioni */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Effetti di accentuazione aggiuntivi */
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+}
+
+.actions button:active {
+  animation: pulse 0.8s;
+}
+
+/* Responsività */
+@media screen and (max-width: 768px) {
+  .modal {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .actions button {
+    font-size: 0.9em;
+    padding: 8px 16px;
+  }
+
+  .criterio {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .criterio label {
+    margin-bottom: 5px;
+    width: 100%;
+  }
+
+  .criterio input,
+  .criterio select {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 5px;
+  }
+
+  .criterio button {
+    align-self: flex-end;
+  }
 }

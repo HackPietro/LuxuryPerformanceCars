@@ -1,62 +1,267 @@
-.popup-container {
-  padding: 20px;
-  font-family: Arial, sans-serif;
-}
-
-.positive-result {
-  color: green;
-  font-weight: bold;
-}
-
-.negative-result {
-  color: red;
-  font-weight: bold;
-}
-
-h2 {
-  margin-bottom: 15px;
-  color: #333;
+/* Impostazioni di base con font migliorato */
+* {
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
 }
 
 table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 20px;
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 90%;
+  max-width: 800px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15), 0 2px 6px rgba(0, 0, 0, 0.12);
+  background-color: rgba(255, 255, 255, 0.9);
+  animation: fadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  margin: 0 auto 25px auto;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  position: relative;
 }
 
+/* Effetto di brillantezza sui bordi */
+table::after {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.3) 0%, transparent 50%, rgba(212, 175, 55, 0.3) 100%);
+  border-radius: 12px;
+  z-index: -1;
+  pointer-events: none;
+}
+
+h2 {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 20px;
+  margin-top: 15px;
+  font-size: 16px;
+  color: #222;
+  font-weight: 500;
+  letter-spacing: 0.8px;
+  position: relative;
+  display: inline-block;
+}
+
+/* Decorazione per il titolo */
+h2::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(to right, #d4af37, #f2d583);
+  margin: 8px auto 0;
+  border-radius: 2px;
+}
+
+.positive-result {
+  color: #28a745;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  position: relative;
+  padding-left: 2px;
+}
+
+.negative-result {
+  color: #dc3545;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  position: relative;
+  padding-left: 2px;
+}
+
+/* Tabella */
 thead th {
-  background-color: #f4f4f4;
-  border: 1px solid #ddd;
-  padding: 8px;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 12px;
+  background: linear-gradient(135deg, #f2f2f2, #e0e0e0);
+  color: #444;
+  letter-spacing: 0.6px;
+  border-bottom: 2px solid rgba(212, 175, 55, 0.5);
   text-align: left;
+  padding: 12px 15px;
+  position: relative;
+}
+
+tbody tr:hover {
+  background-color: rgba(242, 213, 131, 0.05);
+  transition: all 0.2s ease;
 }
 
 tbody td {
-  border: 1px solid #ddd;
-  padding: 8px;
+  border-bottom: 1px solid #e0e0e0;
+  text-align: left;
+  padding: 10px 15px;
+  font-size: 12px;
+  transition: all 0.2s ease;
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Alternanza colori righe */
+tbody tr:nth-child(even) {
+  background-color: rgba(248, 248, 248, 0.7);
 }
 
 .actions {
-  text-align: right;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
 
 button {
-  background-color: #1976d2;
-  color: white;
+  background: linear-gradient(135deg, #d4af37, #b8860b);
+  color: white !important;
   border: none;
-  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
   cursor: pointer;
-  border-radius: 4px;
-  font-size: 14px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 8px 16px;
+  letter-spacing: 0.4px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 6px rgba(184, 134, 11, 0.3);
+  height: 36px;
+  min-width: 100px;
+  position: relative;
+  overflow: hidden;
 }
 
+/* Effetto hover per il bottone */
 button:hover {
-  background-color: #135ba1;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(212, 175, 55, 0.4);
+  background: linear-gradient(135deg, #e5c04d, #c99a0b);
+}
+
+/* Effetto click per il bottone */
+button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(212, 175, 55, 0.3);
+}
+
+/* Onda di clic */
+button::after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.3) 10%, transparent 10%);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  transform: scale(10, 10);
+  opacity: 0;
+  transition: transform 0.5s, opacity 0.8s;
+}
+
+button:active::after {
+  transform: scale(0, 0);
+  opacity: 0.5;
+  transition: 0s;
 }
 
 .centered-text {
   text-align: center;
-  font-size: 1.2rem; /* Ingrandisce il testo */
-  margin-top: 20px; /* Aggiunge spazio sopra */
+  font-size: 16px;
+  font-weight: 600;
+  margin: 25px auto;
+  letter-spacing: 0.5px;
+  color: #333;
+  animation: fadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15), 0 2px 6px rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  width: 90%;
+  max-width: 800px;
+  position: relative;
+  /* Sfumatura testo con oro */
+  background-image: linear-gradient(135deg, #333, #555);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.5);
 }
 
+.centered-text strong {
+  color: #b8860b;
+  position: relative;
+  z-index: 1;
+}
+
+/* Animazioni per caricamento graduale */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Animazione pulse per evidenziare la percentuale */
+@keyframes gentlePulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.centered-text strong {
+  display: inline-block;
+  animation: gentlePulse 2s infinite;
+}
+
+/* Responsività */
+@media screen and (max-width: 768px) {
+  h2 {
+    font-size: 15px;
+  }
+
+  button {
+    padding: 7px 14px;
+    font-size: 12px;
+  }
+
+  thead th, tbody td {
+    padding: 8px 10px;
+    font-size: 11px;
+  }
+
+  table, .centered-text {
+    width: 95%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  h2 {
+    font-size: 14px;
+  }
+
+  thead th, tbody td {
+    padding: 6px 8px;
+    font-size: 10px;
+  }
+
+  button {
+    padding: 6px 12px;
+    font-size: 11px;
+    height: 32px;
+  }
+
+  .centered-text {
+    font-size: 14px;
+    padding: 12px;
+  }
+
+  table, .centered-text {
+    width: 98%;
+  }
+}

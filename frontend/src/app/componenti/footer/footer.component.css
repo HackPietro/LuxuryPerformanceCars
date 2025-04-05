@@ -1,33 +1,74 @@
+/* Footer styling with gold accent theme */
 .moreinfo-container {
   width: auto;
   min-height: 50px;
-  text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #000000;
-  padding: 20px;
+  background: linear-gradient(to bottom, #2a2a2a, #1a1a1a);
+  padding: 25px;
+  border-top: 3px solid #d4af37;
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.2);
+  font-family: 'Roboto', sans-serif;
+  color: #e0e0e0;
+  position: relative;
+  overflow: hidden;
+}
+
+.moreinfo-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(to right, #d4af37, #b8860b, #d4af37);
 }
 
 .img {
   height: 46px;
   width: 46px;
+  filter: drop-shadow(0 2px 2px rgba(255, 255, 255, 0.2));
+  transition: transform 0.3s ease;
 }
 
+.img:hover {
+  transform: scale(1.1);
+}
 
 #leafletMap {
   z-index: 1;
-  margin-left: 5px;
+  margin-left: 20px;
   height: 200px;
   width: 350px;
-  border: 1px #ccc solid;
-  border-radius: 20px;
+  border: 2px solid #444;
+  border-radius: 12px;
   margin-right: 50px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+#leafletMap:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+  border-color: #d4af37;
+}
+
+#footer ul.footer-icons-row {
+  padding: 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
 }
 
 #footer ul.footer-icons-row li {
   display: inline-block;
   margin-right: 40px;
+  transition: transform 0.3s ease;
+}
+
+#footer ul.footer-icons-row li:hover {
+  transform: translateY(-3px);
 }
 
 #footer ul.footer-icons-row li:last-child {
@@ -38,19 +79,50 @@
   margin-left: 80px;
   text-align: left;
   color: #aabbc6;
+  padding: 15px;
+  background-color: #333333;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+  border-left: 4px solid #d4af37;
+  transition: transform 0.3s ease;
+}
+
+.info-class:hover {
+  transform: translateX(5px);
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
 }
 
 .contatti {
   margin-left: 80px;
   text-align: left;
   color: #aabbc6;
+  padding: 15px;
+  background-color: #333333;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+  border-left: 4px solid #d4af37;
+  transition: transform 0.3s ease;
 }
 
+.contatti:hover {
+  transform: translateX(5px);
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+}
 
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
+.moreinfo-container {
+  animation: fadeIn 0.8s ease-out;
+}
+
+/* Responsive design */
 @media screen and (max-width: 600px) {
   .moreinfo-container {
-    padding: 5px;
+    padding: 15px;
     font-size: 14px;
     justify-content: flex-end;
     flex-direction: column;
@@ -60,30 +132,48 @@
   #leafletMap {
     height: 220px;
     width: 90%;
-    margin-top: 10px;
+    margin-top: 20px;
     margin-left: 16px;
+    margin-right: 16px;
   }
 
   .contatti, .info-class {
     margin-top: 20px;
-    margin-left: 40px;
-    margin-right: 40px;
+    margin-left: 16px;
+    margin-right: 16px;
+    width: 90%;
   }
 
   #footer {
-    margin-right: 25px;
+    margin-right: 16px;
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  #footer ul.footer-icons-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  #footer ul.footer-icons-row li {
+    margin-right: 20px;
   }
 
   .img {
     height: 40px;
     width: 40px;
   }
-
 }
 
-
 @media screen and (min-width: 601px) and (max-width: 1500px) {
-  .moreinfo-container{
-    width: 1450px
+  .moreinfo-container {
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 25px;
   }
 }

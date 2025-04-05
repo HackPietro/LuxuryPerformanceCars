@@ -1,0 +1,219 @@
+/* Impostazioni di base con font migliorato */
+* {
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+  background-image: linear-gradient(135deg, #f0f0f0 25%, #e6e6e6 25%, #e6e6e6 50%, #f0f0f0 50%, #f0f0f0 75%, #e6e6e6 75%, #e6e6e6 100%);
+  background-size: 40px 40px;
+}
+
+/* Contenitore principale */
+.container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Stile per il logo o sfondo */
+.logo-container {
+  width: 100%;
+  height: 100vh;
+  background-image: url('/assets/background.jpg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* Stile del logo migliorato */
+.logo-img {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 180px;
+  height: auto;
+  z-index: 10;
+  filter: drop-shadow(0 2px 2px rgba(255, 255, 255, 0.2));
+  transition: transform 0.3s ease;
+}
+
+.logo-img:hover {
+  transform: scale(1.05);
+}
+
+/* Contenitore di autenticazione e pulsanti */
+.authentication-container {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  animation: fadeIn 0.8s ease-out;
+}
+
+/* Pulsante trasparente con stile migliorato */
+.transparent-button {
+  background: rgba(212, 175, 55, 0.2);
+  color: white;
+  border: 2px solid #d4af37;
+  border-radius: 25px;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 10px 25px;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.transparent-button:hover {
+  color: #ffffff;
+  border-color: #f1d876;
+  background-color: rgba(212, 175, 55, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(212, 175, 55, 0.3);
+}
+
+/* Menu e icone */
+.menu-icon-container {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.7);
+  align-items: center;
+  gap: 10px;
+  padding: 5px 10px;
+  border-radius: 25px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border: 1px solid #444;
+}
+
+/* Stile per il pulsante con icona utente */
+.icon-button {
+  font-size: 20px;
+  width: 45px;
+  height: 45px;
+  background: linear-gradient(135deg, #1a1a1a, #333333);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #444;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.icon-button:hover {
+  background: linear-gradient(135deg, #d4af37, #b8860b);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(212, 175, 55, 0.5);
+}
+
+/* Icona utente */
+.icon-user {
+  font-size: 22px;
+  line-height: 45px;
+}
+
+/* Stile per il pulsante Wishlist con stile migliorato */
+.fab-button-3 {
+  font-size: 20px;
+  width: 45px;
+  height: 45px;
+  background: linear-gradient(135deg, #1a1a1a, #333333);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #444;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.fab-button-3:hover {
+  background: linear-gradient(135deg, #d4af37, #b8860b);
+  transform: translateY(-3px) rotate(5deg);
+  box-shadow: 0 8px 15px rgba(212, 175, 55, 0.5);
+}
+
+/* Icona cuore nel bottone wishlist */
+.heart-icon {
+  font-size: 22px;
+  color: #ff4081;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Stili per le icone nel menu */
+.menu-icon {
+  font-size: 18px;
+  margin-right: 8px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Animazioni per caricamento graduale */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Effetti di accentuazione aggiuntivi */
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+}
+
+.fab-button-3:active, .icon-button:active {
+  animation: pulse 0.8s;
+}
+
+/* Responsività */
+@media screen and (max-width: 768px) {
+  .logo-img {
+    width: 140px;
+  }
+
+  .menu-icon-container {
+    top: 15px;
+    right: 15px;
+  }
+
+  .transparent-button {
+    font-size: 16px;
+    padding: 8px 20px;
+  }
+
+  .icon-user, .heart-icon {
+    font-size: 20px;
+  }
+}
+
+/* Effetto pattern di sfondo sottile */
+.container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23d4af37' fill-opacity='0.05' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+  opacity: 0.5;
+  z-index: -1;
+}
