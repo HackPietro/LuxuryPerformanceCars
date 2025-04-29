@@ -7,9 +7,9 @@ L’applicazione web sviluppata ha la finalità di aiutare l’utente ad avere u
 ![](https://github.com/HackPietro/LuxuryPerformanceCars/blob/main/Immagini/Home.png)
 
 Entrati nell’applicazione web, ci troviamo nella schermata Home, dove:
-  • Con il tasto in basso "Vai al Parco Auto" si accede alla sezione Parco Auto.
-  • Con il tasto in alto a destra si entra nella sezione Gestione Account, dove le operazioni variano in base alla tipologia dell’utente loggato.
-  • Se l’utente è loggato, appare un terzo tasto che permette l’accesso alla Wishlist personale.
+  - Con il tasto in basso "Vai al Parco Auto" si accede alla sezione Parco Auto.
+  - Con il tasto in alto a destra si entra nella sezione Gestione Account, dove le operazioni variano in base alla tipologia dell’utente loggato.
+  - Se l’utente è loggato, appare un terzo tasto che permette l’accesso alla Wishlist personale.
 
 Cliccando su "Vai al Parco Auto", si accede alla sezione di visualizzazione di tutte le auto disponibili nel concessionario.
 
