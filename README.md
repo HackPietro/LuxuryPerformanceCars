@@ -13,7 +13,7 @@ Entrati nell’applicazione web, ci troviamo nella schermata Home, dove:
 
 Cliccando su "Vai al Parco Auto", si accede alla sezione di visualizzazione di tutte le auto disponibili nel concessionario.
 
-![](https://github.com/HackPietro/LuxuryPerformanceCars/blob/main/Immagini/Parco%20Auto.png)
+![](https://github.com/HackPietro/LuxuryPerformanceCars/blob/main/Immagini/ParcoAuto.png)
 
 In questa sezione è possibile vedere tutti gli annunci delle auto in vendita. Ogni annuncio è composto da:
   - Una foto del veicolo;
