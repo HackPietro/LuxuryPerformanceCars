@@ -2,7 +2,17 @@ Durante il periodo di Tirocinio presso l'Unical, l’attenzione è stata focaliz
 
 L’applicazione web sviluppata ha la finalità di aiutare l’utente ad avere un’esperienza di ricerca delle auto fluida e ottimizzata per ogni esigenza e d’altra parte aiutare l’amministratore del sistema a studiare i dati e dare una sorta di visione delle azioni dell’utente in modo da capire le richieste e soddisfarli nel tempo con auto inserite nel parco auto del concessionario sempre di loro interesse. L’utente avrà la possibilità di ricercare un’auto con una ricerca avanzata che include tutti i parametri di ricerca di un’auto. Si potrà ricercare tramite un solo parametro o tramite più parametri in modo da avere un risultato molto più coerente alle richieste dell’utente. L’amministratore invece avrà due sezioni dedicate speciali. La prima quella dell’analisi dei dati nonchè l’analisi dei dati raccolti tramite le azioni degli utenti: l’analisi sarà un insieme di dati raccolti, elaborati e resi visibili tramite diagrammi e grafici di vario genere adatti precisamente alle visualizzazioni del risultato dell’elaborazione. La seconda sezione è quella del calcolo della probabilità di vendita di un’auto: l’amministratore potrà inserire tutti i dati di un’auto che ha intenzione di acquistare per la vendita e tramite i dati raccolti ed elaborati dalle azioni degli utenti, auto vendute e altro, l’algoritmo di Machine Learning addestrato e sviluppato appositamente per il tipo di calcolo da effettuare, calcolerà una probabilità di vendita di quell’auto espressa in percentuale, oltre a ricreare una dettagliata tabella con i dati che hanno influenzato positivamente e negativamente la percentuale.
 
-
-Entrati nell’applicazione web ci troviamo nella schermata Home
+Utilizzo del sistema
 
 ![](https://github.com/HackPietro/LuxuryPerformanceCars/blob/main/Immagini/Home.png)
+
+Entrati nell’applicazione web ci troviamo nella schermata Home, dove:
+  • Con il tasto in basso ”Vai al Parco Auto” si accede alla sezione Parco Auto.
+  • Con il tasto in alto a destra si entra nella sezione Gestione Account, dove le operazioni       variano in base alla tipologia dell’utente loggato.
+  • Se l’utente `e loggato, appare un terzo tasto che permette l’accesso alla Wishlist              personale.
+
+Cliccando su ”Vai al Parco Auto” si accede alla sezione di visualizzazione di
+tutte le auto disponibili nel concessionario.
+
+![](https://github.com/HackPietro/LuxuryPerformanceCars/blob/main/Immagini/ParcoAuto.png)
+
