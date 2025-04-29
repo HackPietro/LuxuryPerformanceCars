@@ -27,7 +27,7 @@ Nella barra superiore sono presenti:
 
 Cliccando su "Ricerca Avanzata", si apre la sezione di inserimento dei parametri di ricerca.
 
-![](https://github.com/HackPietro/LuxuryPerformanceCars/blob/main/Immagini/Ricerca%20Avanzata.png)
+![](https://github.com/HackPietro/LuxuryPerformanceCars/blob/main/Immagini/RicercaAvanzata.png)
 
 Si possono cercare auto per diversi parametri o combinazioni, come:
   - Prezzo massimo
@@ -43,7 +43,7 @@ Ogni annuncio include:
   - Dettagli tecnici, descrizione e prezzo di vendita;
   - Pulsanti per aggiungere alla Wishlist e condividere l’annuncio.
 
-![](https://github.com/HackPietro/LuxuryPerformanceCars/blob/main/Immagini/Auto%20Correlate.png)
+![](https://github.com/HackPietro/LuxuryPerformanceCars/blob/main/Immagini/AutoCorrelate.png)
 
 Nella parte inferiore sono visibili alcune auto correlate con caratteristiche simili. Cliccando su un’auto correlata, si aprirà una nuova scheda con i dettagli relativi.
 
@@ -60,13 +60,13 @@ Dalla schermata home:
   - Un utente normale può modificare i propri dati o effettuare il log-out;
   - Un amministratore ha accesso a tre sezioni aggiuntive: Gestione Utenti, Gestione Auto, Analisi Dati
 
-![](https://github.com/HackPietro/LuxuryPerformanceCars/blob/main/Immagini/Gestione%20Utenti.png)
+![](https://github.com/HackPietro/LuxuryPerformanceCars/blob/main/Immagini/GestioneUtenti.png)
 
 Come possiamo vedere dalla Figura, l’amministratore può:
   - Eliminare un utente;
   - Modificare il ruolo di un utente (utente normale o amministratore)
 
-![](https://github.com/HackPietro/LuxuryPerformanceCars/blob/main/Immagini/Gestione%20Auto.png)
+![](https://github.com/HackPietro/LuxuryPerformanceCars/blob/main/Immagini/GestioneAuto.png)
 
 Nella Figura possiamo vedere come l’amministratore può:
   - Eliminare un annuncio tramite il suo ID;
@@ -79,7 +79,7 @@ Inseriti come da Figura i dettagli dell’auto che il concessionario vuole acqui
 
 Calcolata la probabilità di successo di vendita, il dato sarà espresso in percentuale e tutti i dati che hanno contribuito positivamente o negativamente al calcolo della percentuale appariranno di colore verde o rosso nella tabella.
 
-![](https://github.com/HackPietro/LuxuryPerformanceCars/blob/main/Immagini/Calcolo%20Probabilità%20di%20Vendita.png)
+![](https://github.com/HackPietro/LuxuryPerformanceCars/blob/main/Immagini/CalcoloProbabilitàdiVendita.png)
 
 Nella Figura viene mostrato in formato tabellare il confronto tra i dati inseriti e i valori attesi:
   - Anno: atteso tra il 2015 e il 2021, l’auto è del 2013, quindi risultato negativo
@@ -93,7 +93,7 @@ Nella Figura viene mostrato in formato tabellare il confronto tra i dati inserit
 
 Dati questi risultati, si registrano 5 positivi contro 3 negativi e, calcolati in percentuale, la probabilità di vendita risulta del 62,50%. Essendo superiore al 50%, l’auto potrebbe essere rivenduta con successo dal concessionario.
 
-![](https://github.com/HackPietro/LuxuryPerformanceCars/blob/main/Immagini/Analisi%20dei%20dati%200.png)
+![](https://github.com/HackPietro/LuxuryPerformanceCars/blob/main/Immagini/AnalisiDeiDati0.png)
 
 L’amministratore può accedere alla sezione di Analisi Dati, che include vari grafici per:
   - Analisi delle ricerche effettuate dagli utenti;
@@ -102,62 +102,62 @@ L’amministratore può accedere alla sezione di Analisi Dati, che include vari 
 
 Ogni grafico è ottimizzato in base al tipo di analisi richiesta.
 
-![](https://github.com/HackPietro/LuxuryPerformanceCars/blob/main/Immagini/Analisi%20dei%20dati%201.png)
+![](https://github.com/HackPietro/LuxuryPerformanceCars/blob/main/Immagini/AnalisiDeiDati1.png)
 
 La Figura mostra l’analisi delle ricerche effettuate dagli utenti in base ai prezzi minimi desiderati per l’acquisto di un’auto.
 
-![](https://github.com/HackPietro/LuxuryPerformanceCars/blob/main/Immagini/Analisi%20dei%20dati%202.png)
+![](https://github.com/HackPietro/LuxuryPerformanceCars/blob/main/Immagini/AnalisiDeiDati2.png)
 
 La Figura mostra l’analisi delle ricerche effettuate dagli utenti in base ai prezzi massimi desiderati per l’acquisto di un’auto.
 
-![](https://github.com/HackPietro/LuxuryPerformanceCars/blob/main/Immagini/Analisi%20dei%20dati%203.png)
+![](https://github.com/HackPietro/LuxuryPerformanceCars/blob/main/Immagini/AnalisiDeiDati3.png)
 
 La Figura mostra l’analisi delle ricerche effettuate dagli utenti in base al numero di porte desiderate per l’acquisto di un’auto.
 
-![](https://github.com/HackPietro/LuxuryPerformanceCars/blob/main/Immagini/Analisi%20dei%20dati%204.png)
+![](https://github.com/HackPietro/LuxuryPerformanceCars/blob/main/Immagini/AnalisiDeiDati4.png)
 
 La Figura mostra l’analisi delle ricerche effettuate dagli utenti di auto per neopatentati.
 
-![](https://github.com/HackPietro/LuxuryPerformanceCars/blob/main/Immagini/Analisi%20dei%20dati%205.png)
+![](https://github.com/HackPietro/LuxuryPerformanceCars/blob/main/Immagini/AnalisiDeiDati5.png)
 
 La Figura mostra l’analisi delle ricerche effettuate dagli utenti in base alle marche di auto più desiderate.
 
-![](https://github.com/HackPietro/LuxuryPerformanceCars/blob/main/Immagini/Analisi%20dei%20dati%206.png)
+![](https://github.com/HackPietro/LuxuryPerformanceCars/blob/main/Immagini/AnalisiDeiDati6.png)
 
 La Figura mostra l’analisi delle ricerche effettuate dagli utenti in base ai modelli più desiderati di una determinata marca.
 
-![](https://github.com/HackPietro/LuxuryPerformanceCars/blob/main/Immagini/Analisi%20dei%20dati%207.png)
+![](https://github.com/HackPietro/LuxuryPerformanceCars/blob/main/Immagini/AnalisiDeiDati7.png)
 
 La Figura mostra l’analisi delle ricerche effettuate dagli utenti in base ai kilometri minimi desiderati per l’acquisto di un’auto.
 
-![](https://github.com/HackPietro/LuxuryPerformanceCars/blob/main/Immagini/Analisi%20dei%20dati%208.png)
+![](https://github.com/HackPietro/LuxuryPerformanceCars/blob/main/Immagini/AnalisiDeiDati8.png)
 
 La Figura mostra l’analisi delle ricerche effettuate dagli utenti in base ai kilometri massimi desiderati per l’acquisto di un’auto.
 
-![](https://github.com/HackPietro/LuxuryPerformanceCars/blob/main/Immagini/Analisi%20dei%20dati%209.png)
+![](https://github.com/HackPietro/LuxuryPerformanceCars/blob/main/Immagini/AnalisiDeiDati9.png)
 
 La Figura mostra l’analisi delle ricerche effettuate dagli utenti in base agli anni di immatricolazione minimi desiderati per l’acquisto di un’auto.
 
-![](https://github.com/HackPietro/LuxuryPerformanceCars/blob/main/Immagini/Analisi%20dei%20dati%2010.png)
+![](https://github.com/HackPietro/LuxuryPerformanceCars/blob/main/Immagini/AnalisiDeiDati10.png)
 
 La Figura mostra l’analisi delle ricerche effettuate dagli utenti in base agli anni di immatricolazione massimi desiderati per l’acquisto di un’auto.
 
-![](https://github.com/HackPietro/LuxuryPerformanceCars/blob/main/Immagini/Analisi%20dei%20dati%2011.png)
+![](https://github.com/HackPietro/LuxuryPerformanceCars/blob/main/Immagini/AnalisiDeiDati11.png)
 
 La Figura mostra l’analisi delle ricerche effettuate dagli utenti in base ai tipi di cambio desiderati per l’acquisto di un’auto.
 
-![](https://github.com/HackPietro/LuxuryPerformanceCars/blob/main/Immagini/Analisi%20dei%20dati%2012.png)
+![](https://github.com/HackPietro/LuxuryPerformanceCars/blob/main/Immagini/AnalisiDeiDati12.png)
 
 La Figura mostra l’analisi delle ricerche effettuate dagli utenti in base ai tipi di carburante desiderati per l’acquisto di un’auto.
 
-![](https://github.com/HackPietro/LuxuryPerformanceCars/blob/main/Immagini/Analisi%20dei%20dati%2013.png)
+![](https://github.com/HackPietro/LuxuryPerformanceCars/blob/main/Immagini/AnalisiDeiDati13.png)
 
 La Figura mostra l’analisi delle ricerche effettuate dagli utenti in base alle categorie di auto desiderate per l’acquisto di un’auto.
 
-![](https://github.com/HackPietro/LuxuryPerformanceCars/blob/main/Immagini/Analisi%20dei%20dati%2014.png)
+![](https://github.com/HackPietro/LuxuryPerformanceCars/blob/main/Immagini/AnalisiDeiDati14.png)
 
 La Figura mostra un grafico contenente il numero di click raggiunto da ogni annuncio presente nell’applicazione web.
 
-![](https://github.com/HackPietro/LuxuryPerformanceCars/blob/main/Immagini/Analisi%20dei%20dati%2015.png)
+![](https://github.com/HackPietro/LuxuryPerformanceCars/blob/main/Immagini/AnalisiDeiDati15.png)
 
 La Figura mostra un grafico contenente l’andamento delle probabilità di vendita espresse in percentuali di un determinato modello di auto.
