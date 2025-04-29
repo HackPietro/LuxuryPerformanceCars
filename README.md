@@ -5,4 +5,4 @@ L’applicazione web sviluppata ha la finalità di aiutare l’utente ad avere u
 
 Entrati nell’applicazione web ci troviamo nella schermata Home
 
-![Descrizione immagine](immagini/Home.png)
+![Descrizione immagine](https://github.com/HackPietro/LuxuryPerformanceCars/blob/main/Immagini/Home.png)
